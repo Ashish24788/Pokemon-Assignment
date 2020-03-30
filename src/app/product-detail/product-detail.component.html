@@ -1,1 +1,92 @@
-<p>product-detail works!</p>
+<div class="pokemon-detail">
+    <div class="pokemon-detail__header">
+      <img [src]="detailData?.sprites?.front_default"/>
+      <div class="kt-subheader__main">
+        <h1 class="kt-subheader__title">
+            {{detailData?.name}}
+        </h1>
+        <div class="subheader">
+          <span *ngFor="let type of detailData?.types">{{type.type.name}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="pokemon-detail__body">
+      <div class="pokemon-detail__overview-card">
+        <div class="pokemon-detail__card-box">
+          <div class="counter">
+            <div class="counter-label">Order</div>
+            <div class="counter-number-group text-truncate">
+              <span class="counter-number">
+                  {{detailData?.order}}
+                </span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="counter">
+            <div class="counter-label">Weight</div>
+            <div class="counter-number-group text-truncate">
+              <span class="counter-number">
+                  {{detailData?.weight}}
+                </span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="counter">
+            <div class="counter-label">Height</div>
+            <div class="counter-number-group text-truncate">
+              <span class="counter-number">
+                  {{detailData?.height}}
+                </span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="counter">
+            <div class="counter-label">Base Experience</div>
+            <div class="counter-number-group text-truncate">
+              <span class="counter-number">
+                  {{detailData?.base_experience}}
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="pokemon-detail__detail-card">
+        <div class="pokemon-detail__detail-card-head">
+          <h3>Abilities</h3>
+        </div>
+        <div class="pokemon-detail__detail-card-body">
+          <div class="pokemon-detail__detail-card-item" *ngFor="let ability of detailData?.abilities">
+            {{ability?.ability?.name}}
+          </div>
+        </div>
+      </div>
+  
+      <div class="pokemon-detail__detail-card">
+        <div class="pokemon-detail__detail-card-head">
+          <h3>Stats</h3>
+        </div>
+        <div class="pokemon-detail__detail-card-body">
+          <div class="pokemon-detail__detail-card-item" *ngFor="let stat of detailData?.stats">
+            {{stat?.stat?.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pokemon-detail__detail-card" >
+      <div class="pokemon-detail__detail-card-head">
+        <h3>Moves</h3>
+      </div>
+      <div class="pokemon-detail__detail-card-body">
+        <div class="pokemon-detail__detail-card-item" *ngFor="let move of detailData?.moves">
+          {{move?.move?.name}}
+        </div>
+      </div>
+    </div>
+    <div class="pokemon-detail__not-found">
+      Pokemon Not Found :(
+    </div>
+  </div>

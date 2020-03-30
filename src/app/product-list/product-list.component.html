@@ -1,1 +1,17 @@
-<p>product-list works!</p>
+<div class="pokemon-list">
+    <h1> List</h1>
+    <div class="pokemon-list__cards">
+        <div class="pokemon-list__card-item" *ngFor="let pokemon of listData">
+            <img [src]="pokemon?.url" />
+            <ng-container *ngIf="navigateToDetail; else other">
+                <span [routerLink]="['/detail', pokemon.name]" routerLinkActive="active">{{pokemon?.name}}</span>
+            </ng-container>
+            <ng-template #other>
+                <span>{{pokemon?.name}}</span>
+            </ng-template>
+        </div>
+    </div>
+</div>
+<div class="pokemon-list">
+    <h1 class="pokemon-list__title">There is no pokemon :(</h1>
+</div>

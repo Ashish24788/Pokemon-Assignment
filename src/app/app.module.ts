@@ -13,6 +13,10 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
+import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,11 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule,
+    HttpClientModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [BaseService],
   bootstrap: [AppComponent]

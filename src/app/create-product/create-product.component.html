@@ -1,1 +1,85 @@
-<p>create-product works!</p>
+<div style="padding-top: 15px;">
+    <!-- Extended material form grid -->
+        <form [formGroup]="createForm">
+            <!-- Grid row -->
+            <div class="form-group form-row">
+                <!-- Grid column -->
+                <div class="col-md-4">
+                    <!-- Material input -->
+                    <div class="md-form form-group">
+                    <label for="inputName">Name</label>
+                    <input mdbInput type="text" class="form-control" id="inputName" name="name" placeholder="Name" formControlName="name"
+                    autocomplete="off" [ngClass]="{ 'is-invalid': formErrors.name }" required>
+                    </div>
+                    <div *ngIf="formErrors.name" class="login__input-invalid-feedback">
+                        {{ formErrors.name }}
+                    </div>
+                </div>
+                <!-- Grid column -->
+                <div class="col-md-4">
+                    <!-- Material input -->
+                    <div class="md-form form-group">
+                    <label for="inputDesc">Description</label>
+                    <input mdbInput type="text" class="form-control" id="inputDesc" name="description" placeholder="Description" formControlName="description"
+                    autocomplete="off" [ngClass]="{ 'is-invalid': formErrors.description }" required>
+                    </div>
+                    <div *ngIf="formErrors.description" class="login__input-invalid-feedback">
+                        {{ formErrors.description }}
+                    </div>
+                </div>
+    
+                <div class="col-md-4">
+                    <!-- Material input -->
+                    <div class="md-form form-group">
+                    <label for="inputPrice">Price</label>
+                    <input mdbInput type="Number" class="form-control" id="inputPrice" placeholder="Price" name="price" placeholder="Description" formControlName="price"
+                    autocomplete="off" [ngClass]="{ 'is-invalid': formErrors.price }" required>
+                    </div>
+                    <div *ngIf="formErrors.price" class="login__input-invalid-feedback">
+                        {{ formErrors.price }}
+                    </div>
+                </div>
+    
+                <div class="col-md-4">
+                    <label for="select">Category</label>
+                    <select class="custom-select">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        </select>
+                </div>
+    
+                <div class="col-md-4">
+                    <div class="md-form form-group">
+                        <label for="inputURL">Image URL</label>
+                        <input mdbInput type="Input" class="form-control" id="inputURL" placeholder="Image URL">
+                    </div>
+                </div>
+    
+                <div class="col">
+                    <div class="md-form form-group">
+                        <label for="PhnNumber">Phone Number</label>
+                        <input mdbInput type="number" class="form-control" id="PhnNumber" placeholder="Phone Number">
+                    </div>
+                </div>
+    
+                <div class="col">
+                    <label for="select">Phone Type</label>
+                    <select class="custom-select">
+                        <option selected>select</option>
+                        <option value="1">Mobile</option>
+                        <option value="2">LandLine</option>
+                        </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" mdbBtn style="background:blue">Add New Product</button>
+            </div>
+                <!-- Grid row -->
+            <div>
+                <button type="button" mdbBtn color="primary">Reset</button>
+                <button type="submit" mdbBtn style="background:green">Save</button>
+            </div>
+        </form>
+    </div>

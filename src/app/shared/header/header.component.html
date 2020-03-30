@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" [routerLink]="['product']">Home</a>
+    <a class="navbar-link" [routerLink]="['home']" routerLinkActive="active">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,12 +8,22 @@
       <ul class="navbar-nav mr-auto">
   
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['product']">Product</a>
+          <a class="nav-link" [routerLink]="['detail']" routerLinkActive="active">Detail</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['pokemon']">Pokemon</a>
-        </li>  
+          <a class="nav-link" [routerLink]="['create-product']" routerLinkActive="active">Create Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['product']" routerLinkActive="active">Product</a>
+        </li>
+      
       </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+            Work For search!!!
+        </li>
+    </ul>
     </div>
   </nav>
   

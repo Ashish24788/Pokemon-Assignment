@@ -5,8 +5,8 @@ import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class BaseService {
-
+export class UserService {
+    public isAdmin: boolean = true;
     constructor(
         private http: HttpClient,
         private router: Router

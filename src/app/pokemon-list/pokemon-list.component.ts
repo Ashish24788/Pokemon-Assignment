@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseService } from '../core/base.service';
+import { UserService } from '../core/user.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-pokemon-list',
@@ -15,12 +15,12 @@ export class PokemonListComponent implements OnInit {
   nextBtn: boolean;
   navigateToDetail = false;
 
-  constructor(private baseService: BaseService, private router: Router) {
+  constructor(private userService: UserService, private router: Router) {
     this.navigateToDetail = this.router.url === '/home';
    }
 
   ngOnInit() {
-    this.baseService.get(this.url).subscribe(
+    this.userService.get(this.url).subscribe(
       res => {
         this.jsonData = res;
         this.listData = this.jsonData.results;
@@ -35,7 +35,7 @@ export class PokemonListComponent implements OnInit {
     if (this.jsonData.previous) {
       this.prevBtn = true;
       this.nextBtn = false;
-      this.baseService.get(this.jsonData.previous).subscribe(
+      this.userService.get(this.jsonData.previous).subscribe(
         res => {
           this.jsonData = res;
           this.listData = this.jsonData.results;
@@ -48,7 +48,7 @@ export class PokemonListComponent implements OnInit {
     else if (this.jsonData.next) {
       this.prevBtn = false;
       this.nextBtn = true;
-      this.baseService.get(this.jsonData.next).subscribe(
+      this.userService.get(this.jsonData.next).subscribe(
         res => {
           this.jsonData = res;
           this.listData = this.jsonData.results;

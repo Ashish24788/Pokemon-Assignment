@@ -104,7 +104,7 @@ export class CreateProductComponent implements OnInit {
   //   });
   // }
 
-  submit(data) {
+  submit() {
     if (this.addProductForm.valid) {
       localStorage.setItem('addProductForm', JSON.stringify(this.addProductForm.value));
     }

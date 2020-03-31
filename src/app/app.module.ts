@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-// import { BaseService } from './core/base.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -17,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuardComponent } from "./services/auth.service";
-import { UserService } from "./services/user.service";
+import { UserService } from "./core/user.service";
 
 @NgModule({
   declarations: [
@@ -34,11 +33,10 @@ import { UserService } from "./services/user.service";
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [
-    // BaseService, 
     AuthGuardComponent, UserService],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BaseService } from "../core/base.service";
+import { UserService } from "../core/user.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -14,13 +14,13 @@ export class ProductDetailComponent implements OnInit {
   
 
   constructor(private route: ActivatedRoute,
-    private baseService: BaseService, private router: Router) {
+    private userService: UserService, private router: Router) {
     
   }
 
   ngOnInit(): void {
     let name = this.route.snapshot.paramMap.get('name');
-    this.baseService.get(`${this.url}${name}`).subscribe(
+    this.userService.get(`${this.url}${name}`).subscribe(
       res => {
         this.detailData = res;
         console.log('HTTP response', res);

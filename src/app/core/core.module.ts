@@ -2,7 +2,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { BaseService } from './base.service';
+import { UserService } from './user.service';
 
 @NgModule({
     imports: [
@@ -13,7 +13,7 @@ import { BaseService } from './base.service';
     exports: [
     ],
     providers: [
-        BaseService]
+        UserService]
 })
 export class CoreModule {
 

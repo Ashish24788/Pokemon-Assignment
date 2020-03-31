@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseService } from '../core/base.service';
+import { UserService } from '../core/user.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-pokemon-list',
@@ -18,7 +18,7 @@ export class PokemonListComponent implements OnInit {
   }[] = [];
   jsonData: any = {};
 
-  constructor(private baseService: BaseService, private router: Router) {
+  constructor(private userService: UserService, private router: Router) {
    }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class PokemonListComponent implements OnInit {
       this.listData = this.jsonData[this.currentPage];
       return;
     }
-    this.baseService.get(this.url + (this.currentPage - 1)).subscribe(
+    this.userService.get(this.url + (this.currentPage - 1)).subscribe(
       res => {
         this.totalCount = res.count;
         this.totalPage = Math.ceil(this.totalCount / this.limit);

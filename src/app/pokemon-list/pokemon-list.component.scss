@@ -1,0 +1,34 @@
+.pokemon-contain {
+    padding: 20px;
+    .pokemon-list {
+        .pokemon {
+            border: 1px solid #BBB;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+            margin: 0 20px 20px 0;
+            img {
+                height: 100px;
+                width: 100px;
+            }
+        }
+    }
+    .button-contain {
+        float: right;
+        button {
+            color: white;
+            background: blue;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 80px;
+            margin-right: 15px;
+            &:last-of-type {
+                margin-right: 0px;
+            }
+            &:disabled {
+                background: gray;
+            }
+        }
+    }
+}

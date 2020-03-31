@@ -154,7 +154,8 @@ export class CreateProductComponent implements OnInit {
 
   submit() {
     if (this.addProductForm.valid) {
-      localStorage.setItem('addProductForm', JSON.stringify(this.addProductForm.value));
+      const list:any = [this.addProductForm.value];
+      localStorage.setItem('addProductForm', JSON.stringify(list));
     }
     this.addProductForm.reset();
   }

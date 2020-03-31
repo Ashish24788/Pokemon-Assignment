@@ -1,1 +1,12 @@
-<p>pokemon-list works!</p>
+<div class="pokemon-contain">
+    <div class="pokemon-list">
+        <div class="pokemon" *ngFor="let pokemon of listData">
+            <img src="../../assets/blank-profile.png" />
+            <div [routerLink]="['/detail', pokemon.name]" routerLinkActive="active">{{pokemon?.name}}</div>
+        </div>
+    </div>
+    <div class="button-contain">
+        <button [disabled]="!(currentPage > 1)" (click)="back()">Previous</button>
+        <button [disabled]="!(currentPage < totalPage)" (click)="next()">Next</button>
+    </div>
+</div>

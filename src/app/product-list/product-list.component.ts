@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseService } from "../core/base.service";
+import { BaseService } from '../core/base.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
 
-  url: string = 'https://pokeapi.co/api/v2/pokemon/?limit=30&offset=0';
+  url = 'https://pokeapi.co/api/v2/pokemon/?limit=30&offset=0';
   listData: any;
   jsonData: any;
   prevBtn: boolean;
   nextBtn: boolean;
-  navigateToDetail: boolean = false;
+  navigateToDetail = false;
 
   constructor(private baseService: BaseService, private router: Router) {
     this.navigateToDetail = this.router.url === '/home';
@@ -31,8 +31,8 @@ export class ProductListComponent implements OnInit {
     );
   }
 
-  showNextPrevData (){
-    if(this.jsonData.previous) {
+  showNextPrevData() {
+    if (this.jsonData.previous) {
       this.prevBtn = true;
       this.nextBtn = false;
       this.baseService.get(this.jsonData.previous).subscribe(
@@ -45,7 +45,7 @@ export class ProductListComponent implements OnInit {
         () => console.log('HTTP request completed.')
       );
     }
-    else if(this.jsonData.next) {
+    else if (this.jsonData.next) {
       this.prevBtn = false;
       this.nextBtn = true;
       this.baseService.get(this.jsonData.next).subscribe(

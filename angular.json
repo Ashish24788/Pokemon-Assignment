@@ -123,6 +123,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-assignment"
+    }
+  },
+  "defaultProject": "angular-assignment",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

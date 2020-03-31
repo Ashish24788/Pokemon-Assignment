@@ -1,0 +1,15 @@
+.pokemon-list {
+    padding: 20px;
+    .pokemon {
+        border: 1px solid #BBB;
+        border-radius: 5px;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        margin: 0 20px 20px 0;
+        img {
+            height: 100px;
+            width: 100px;
+        }
+    }
+}

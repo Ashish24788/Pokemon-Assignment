@@ -7,13 +7,19 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <span class="ui-float-label">
-                                <input type="text" formControlName="name">
                                 <label for="float-input">Name
                                     <em class="required">*</em>
                                 </label>
-                                <span class="error member-msg" *ngIf="addProductForm?.controls?.name?.errors?.required">
+                                <input type="text" formControlName="name">
+                                <div style="color:red" class="form-control-feedback"
+                                        *ngIf="addProductForm.controls.name.errors && (addProductForm.controls.name.dirty || addProductForm.controls.name.touched)">
+                                    <p *ngIf="addProductForm.controls.name.errors.required">Name is required</p>
+                                    <p *ngIf="addProductForm.controls.name.errors.minLength">Name Length should be greater then 3</p>
+                                    <p *ngIf="addProductForm.controls.name.errors.pattern">Name should be alphanumeric</p>
+                                </div>
+                                <!-- <span class="error member-msg" *ngIf="addProductForm?.controls?.name?.errors?.required">
                                     "Name required"
-                                </span>
+                                </span> -->
                             </span>
                         </div>
                     </div>
@@ -22,12 +28,18 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <span class="ui-float-label">
-                                <input type="text" formControlName="description">
                                 <label for="float-input">Description
                                     <em class="required">*</em>
                                 </label>
-                                <span class="error member-msg">
-                                </span>
+                                <input type="text" formControlName="description">
+                                <div style="color:red" class="form-control-feedback"
+                                        *ngIf="addProductForm.controls.description.errors && (addProductForm.controls.description.dirty || addProductForm.controls.description.touched)">
+                                    <p *ngIf="addProductForm.controls.description.errors.required">description is required</p>
+                                    <p *ngIf="addProductForm.controls.description.errors.minLength">description Length should be greater then 3</p>
+                                    <p *ngIf="addProductForm.controls.description.errors.pattern">description should be alphanumeric</p>
+                                </div>
+                                <!-- <span class="error member-msg">
+                                </span> -->
                             </span>
                         </div>
                     </div>
@@ -36,12 +48,17 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <span class="ui-float-label">
-                                <input type="text" formControlName="price">
                                 <label for="float-input">Price
                                     <em class="required">*</em>
                                 </label>
-                                <span class="error member-msg">
-                                </span>
+                                <input type="text" formControlName="price">
+                                <div style="color:red" class="form-control-feedback"
+                                        *ngIf="addProductForm.controls.price.errors && (addProductForm.controls.price.dirty || addProductForm.controls.price.touched)">
+                                    <p *ngIf="addProductForm.controls.price.errors.required">price is required</p>
+                                    <p *ngIf="addProductForm.controls.price.errors.pattern">price with 2 decimal places only</p>
+                                </div>
+                                <!-- <span class="error member-msg">
+                                </span> -->
                             </span>
                         </div>
                     </div>
@@ -53,14 +70,18 @@
                                 <label for="float-input">Category
                                     <em class="required">*</em>
                                 </label>
-                                <select class="custom-select">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="custom-select" formControlName="category">
+                                    <option selected>Category</option>
+                                    <option value="1">Electronics</option>
+                                    <option value="2">Cloths</option>
+                                    <option value="3">Blankets </option>
                                 </select>
-                                <span class="error member-msg">
-                                </span>
+                                <div style="color:red" class="form-control-feedback"
+                                        *ngIf="addProductForm.controls.category.errors && (addProductForm.controls.category.dirty || addProductForm.controls.category.touched)">
+                                    <p *ngIf="addProductForm.controls.category.errors.required">category is required</p>
+                                </div>
+                                <!-- <span class="error member-msg">
+                                </span> -->
                             </span>
                         </div>
                     </div>
@@ -69,12 +90,17 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <span class="ui-float-label">
-                                <input type="text" formControlName="url">
                                 <label for="float-input">Image Url
                                     <em class="required">*</em>
                                 </label>
-                                <span class="error member-msg">
-                                </span>
+                                <input type="text" formControlName="url">
+                                <div style="color:red" class="form-control-feedback"
+                                        *ngIf="addProductForm.controls.url.errors && (addProductForm.controls.url.dirty || addProductForm.controls.url.touched)">
+                                    <p *ngIf="addProductForm.controls.url.errors.required">url is required</p>
+                                    <p *ngIf="addProductForm.controls.url.errors.pattern">url is valid</p>
+                                </div>
+                                <!-- <span class="error member-msg">
+                                </span> -->
                             </span>
                         </div>
                     </div>
@@ -83,12 +109,18 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <span class="ui-float-label">
-                                <input type="text" formControlName="number">
                                 <label for="float-input">Phone Number
                                     <em class="required">*</em>
                                 </label>
-                                <span class="error member-msg">
-                                </span>
+                                <input type="text" formControlName="number">
+                                <div style="color:red" class="form-control-feedback"
+                                        *ngIf="addProductForm.controls.number.errors && (addProductForm.controls.number.dirty || addProductForm.controls.number.touched)">
+                                    <p *ngIf="addProductForm.controls.number.errors.required">number is required</p>
+                                    <p *ngIf="addProductForm.controls.number.errors.pattern">number is only Number</p>
+                                    <p *ngIf="addProductForm.controls.number.errors.maxLength">number is only Number</p>
+                                </div>
+                                <!-- <span class="error member-msg">
+                                </span> -->
                             </span>
                         </div>
                     </div>
@@ -97,15 +129,14 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <span class="ui-float-label">
-                                <select class="custom-select">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
                                 <label for="float-input">Phone Type
                                     <em class="required">*</em>
                                 </label>
+                                <select class="custom-select" formControlName="phoneType">
+                                    <option selected>Phone Type</option>
+                                    <option value="1">Mobile</option>
+                                    <option value="2">Landline</option>
+                                </select>
                                 <span class="error member-msg">
                                 </span>
                             </span>
@@ -113,8 +144,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button class="btn form-btn">Submit</button>
+                    <button type="button" class="btn">Add New Product</button>
+                </div>
+                <div class="row">
+                    <div class="text-right">
+                        <button type="button" [disabled]="addProductForm.invalid" class="btn form-btn">Submit</button>
+                    </div>
+                    <div class="text-right">
+                        <button type="button" class="btn form-btn" (click) = "reset()">Reset</button>
                     </div>
                 </div>
             </div>

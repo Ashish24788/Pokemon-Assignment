@@ -9,6 +9,7 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormControlName, FormA
 export class CreateProductComponent implements OnInit {
   public addProductForm: FormGroup;
   msgs: any[];
+  reg:any = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
   @Output() onSubmit = new EventEmitter<any>();
 
@@ -30,9 +31,8 @@ export class CreateProductComponent implements OnInit {
         {
           validators: Validators.compose([
             Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(30),
-            // Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
+            Validators.minLength(8),
+            Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
           ]),
           updateOn: 'blur'
         }
@@ -42,7 +42,6 @@ export class CreateProductComponent implements OnInit {
           validators: Validators.compose([
             Validators.required,
             Validators.minLength(3),
-            Validators.maxLength(30),
             Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
           ]),
           updateOn: 'blur'
@@ -52,9 +51,7 @@ export class CreateProductComponent implements OnInit {
         {
           validators: Validators.compose([
             Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(30),
-            Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
+            Validators.pattern(/^\d+\.\d{2}$/)
           ]),
           updateOn: 'blur'
         }
@@ -62,10 +59,7 @@ export class CreateProductComponent implements OnInit {
       category: [category,
         {
           validators: Validators.compose([
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(30),
-            Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
+            Validators.required
           ]),
           updateOn: 'blur'
         }
@@ -74,9 +68,7 @@ export class CreateProductComponent implements OnInit {
         {
           validators: Validators.compose([
             Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(30),
-            Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
+            Validators.pattern(this.reg)
           ]),
           updateOn: 'blur'
         }
@@ -85,9 +77,8 @@ export class CreateProductComponent implements OnInit {
         {
           validators: Validators.compose([
             Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(30),
-            Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
+            Validators.maxLength(10),
+            Validators.pattern("^[0-9]*$"),
           ]),
           updateOn: 'blur'
         }
@@ -95,10 +86,7 @@ export class CreateProductComponent implements OnInit {
       phoneType: [phoneType,
         {
           validators: Validators.compose([
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(30),
-            Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
+            Validators.required
           ]),
           updateOn: 'blur'
         }
@@ -109,15 +97,22 @@ export class CreateProductComponent implements OnInit {
   }
 
   // formArrayInstance.push(this.createVenuePricingForm()) 
-  createVenuePricingForm(para1, para2): FormGroup {
-    return this.formBuilder.group({
-      data1: para1,
-      data2: para2
-    });
-  }
+  // createVenuePricingForm(para1, para2): FormGroup {
+  //   return this.formBuilder.group({
+  //     data1: para1,
+  //     data2: para2
+  //   });
+  // }
 
   submit(data) {
-    console.log("submit called-->", data);
+    if (this.addProductForm.valid) {
+      localStorage.setItem('addProductForm', JSON.stringify(this.addProductForm.value));
+    }
+    this.addProductForm.reset();
+  }
+
+  reset() {
+    this.addProductForm.reset();
   }
 
 }

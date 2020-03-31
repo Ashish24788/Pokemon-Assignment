@@ -13,11 +13,11 @@ import { AuthGuardComponent } from "./services/auth.service";
 const routes: Routes = [
   {
     path: 'home',
-    component: PokemonListComponent, /*canActivate:[AuthGuardComponent]*/
+    component: PokemonListComponent, 
   },
   {
     path: 'product',
-    component: ProductListComponent, /*canActivate:[AuthGuardComponent]*/
+    component: ProductListComponent, canActivate:[AuthGuardComponent]
   },
   // {
   //   path: 'pokemon',
@@ -25,11 +25,11 @@ const routes: Routes = [
   // },
   {
     path: 'detail/:name',
-    component: ProductDetailComponent, /*canActivate:[AuthGuardComponent]*/
+    component: ProductDetailComponent, 
   },
   {
     path: 'create-product',
-    component: CreateProductComponent, /*canActivate:[AuthGuardComponent]*/
+    component: CreateProductComponent, canActivate:[AuthGuardComponent]
   },
 
   {

@@ -7,57 +7,49 @@ import { Router } from '@angular/router';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-
-  url = 'https://pokeapi.co/api/v2/pokemon/?limit=30&offset=0';
-  listData: any;
-  jsonData: any;
-  prevBtn: boolean;
-  nextBtn: boolean;
-  navigateToDetail = false;
+  limit = 30;
+  totalCount = 0;
+  totalPage = 1;
+  currentPage = 1;
+  url = 'https://pokeapi.co/api/v2/pokemon/?limit=' + this.limit + '&offset=';
+  listData: {
+    name: string;
+    url: string
+  }[] = [];
+  jsonData: any = {};
 
   constructor(private baseService: BaseService, private router: Router) {
-    this.navigateToDetail = this.router.url === '/home';
    }
 
   ngOnInit() {
-    this.baseService.get(this.url).subscribe(
+    this.getPokemonData();
+  }
+
+  getPokemonData() {
+    if (this.jsonData[this.currentPage]) {
+      this.listData = this.jsonData[this.currentPage];
+      return;
+    }
+    this.baseService.get(this.url + (this.currentPage - 1)).subscribe(
       res => {
-        this.jsonData = res;
-        this.listData = this.jsonData.results;
-        console.log('HTTP response', res);
+        this.totalCount = res.count;
+        this.totalPage = Math.ceil(this.totalCount / this.limit);
+        this.jsonData[this.currentPage] = res.results;
+        this.listData = res.results;
       },
       err => console.log('HTTP Error', err),
       () => console.log('HTTP request completed.')
     );
   }
 
-  showNextPrevData() {
-    if (this.jsonData.previous) {
-      this.prevBtn = true;
-      this.nextBtn = false;
-      this.baseService.get(this.jsonData.previous).subscribe(
-        res => {
-          this.jsonData = res;
-          this.listData = this.jsonData.results;
-          console.log('HTTP response', res);
-        },
-        err => console.log('HTTP Error', err),
-        () => console.log('HTTP request completed.')
-      );
-    }
-    else if (this.jsonData.next) {
-      this.prevBtn = false;
-      this.nextBtn = true;
-      this.baseService.get(this.jsonData.next).subscribe(
-        res => {
-          this.jsonData = res;
-          this.listData = this.jsonData.results;
-          console.log('HTTP response', res);
-        },
-        err => console.log('HTTP Error', err),
-        () => console.log('HTTP request completed.')
-      );
-    }
+  back() {
+    --this.currentPage;
+    this.getPokemonData();
+  }
+
+  next() {
+    ++this.currentPage;
+    this.getPokemonData();
   }
 
 }

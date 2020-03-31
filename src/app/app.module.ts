@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { BaseService } from './core/base.service';
+// import { BaseService } from './core/base.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -15,6 +15,9 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AuthGuardComponent } from "./services/auth.service";
+import { UserService } from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [BaseService],
+  providers: [
+    // BaseService, 
+    AuthGuardComponent, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

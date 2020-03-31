@@ -1,4 +1,4 @@
-<form [formGroup]="addProductForm" action="#" (ngSubmit)="submit(true)" method="post" novalidate>
+<form [formGroup]="addProductForm">
     <div class="form-section">
         <h3>Details</h3>
         <div>
@@ -148,7 +148,7 @@
                 </div>
                 <div class="row">
                     <div class="text-right">
-                        <button type="button" [disabled]="addProductForm.invalid" class="btn form-btn">Submit</button>
+                        <button type="button" [disabled]="addProductForm.invalid" class="btn form-btn" (click)="submit()">Submit</button>
                     </div>
                     <div class="text-right">
                         <button type="button" class="btn form-btn" (click) = "reset()">Reset</button>

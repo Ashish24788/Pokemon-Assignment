@@ -1,17 +1,11 @@
 <div class="pokemon-list">
-    <div class="pokemon" *ngFor="let pokemon of listData">
-        <img src="../../assets/blank-profile.png" />
-        <div [routerLink]="['/detail', pokemon.name]" routerLinkActive="active">{{pokemon?.name}}</div>
-        <!-- <ng-container *ngIf="navigateToDetail; else other"> -->
-        <!-- </ng-container> -->
-        <!-- <ng-template #other>
-            <span>{{pokemon?.name}}</span>
-        </ng-template> -->
+    <div class="pokemon-list__cards">
+        <div class="pokemon-list__card-item" *ngFor="let pokemon of listData">
+            <img [src]="pokemon?.url" />
+                <span>{{pokemon?.name}}</span>
+        </div>
     </div>
 </div>
-
-<!-- <div *ngIf="navigateToDetail">
-    <button type="previous" style="background:blue" disabled="{{prevBtn}}"
-        (click)="showNextPrevData()">Previous</button>
-    <button type="Next" style="background:blue" disabled="{{nextBtn}}" (click)="showNextPrevData()">Next</button>
-</div> -->
+<div class="pokemon-list">
+    <h1 class="pokemon-list__title">There is no pokemon :(</h1>
+</div>

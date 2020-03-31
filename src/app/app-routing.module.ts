@@ -11,16 +11,16 @@ import { PageNotFoundComponent } from "./shared/page-not-found/page-not-found.co
 const routes: Routes = [
   {
     path: 'home',
-    component: ProductListComponent,
+    component: PokemonListComponent,
   },
   {
     path: 'product',
     component: ProductListComponent,
   },
-  {
-    path: 'pokemon',
-    component: PokemonListComponent,
-  },
+  // {
+  //   path: 'pokemon',
+  //   component: PokemonListComponent,
+  // },
   {
     path: 'detail/:name',
     component: ProductDetailComponent,

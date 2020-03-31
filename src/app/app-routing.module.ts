@@ -8,26 +8,28 @@ import { CreateProductComponent } from "./create-product/create-product.componen
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { PageNotFoundComponent } from "./shared/page-not-found/page-not-found.component";
 
+import { AuthGuardComponent } from "./services/auth.service";
+
 const routes: Routes = [
   {
     path: 'home',
-    component: ProductListComponent,
+    component: ProductListComponent, /*canActivate:[AuthGuardComponent]*/
   },
   {
     path: 'product',
-    component: ProductListComponent,
+    component: ProductListComponent, /*canActivate:[AuthGuardComponent]*/
   },
   {
     path: 'pokemon',
-    component: PokemonListComponent,
+    component: PokemonListComponent, /*canActivate:[AuthGuardComponent]*/
   },
   {
     path: 'detail/:name',
-    component: ProductDetailComponent,
+    component: ProductDetailComponent, /*canActivate:[AuthGuardComponent]*/
   },
   {
     path: 'create-product',
-    component: CreateProductComponent
+    component: CreateProductComponent, /*canActivate:[AuthGuardComponent]*/
   },
 
   {

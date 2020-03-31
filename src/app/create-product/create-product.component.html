@@ -1,11 +1,8 @@
-<div style="padding-top: 15px;">
-    <!-- Extended material form grid -->
+<!-- <div style="padding-top: 15px;">
         <form [formGroup]="createForm">
-            <!-- Grid row -->
+            
             <div class="form-group form-row">
-                <!-- Grid column -->
                 <div class="col-md-4">
-                    <!-- Material input -->
                     <div class="md-form form-group">
                     <label for="inputName">Name</label>
                     <input mdbInput type="text" class="form-control" id="inputName" name="name" placeholder="Name" formControlName="name"
@@ -15,9 +12,7 @@
                         {{ formErrors.name }}
                     </div>
                 </div>
-                <!-- Grid column -->
                 <div class="col-md-4">
-                    <!-- Material input -->
                     <div class="md-form form-group">
                     <label for="inputDesc">Description</label>
                     <input mdbInput type="text" class="form-control" id="inputDesc" name="description" placeholder="Description" formControlName="description"
@@ -29,7 +24,6 @@
                 </div>
     
                 <div class="col-md-4">
-                    <!-- Material input -->
                     <div class="md-form form-group">
                     <label for="inputPrice">Price</label>
                     <input mdbInput type="Number" class="form-control" id="inputPrice" placeholder="Price" name="price" placeholder="Description" formControlName="price"
@@ -76,10 +70,56 @@
             <div>
                 <button type="button" mdbBtn style="background:blue">Add New Product</button>
             </div>
-                <!-- Grid row -->
             <div>
                 <button type="button" mdbBtn color="primary">Reset</button>
                 <button type="submit" mdbBtn style="background:green">Save</button>
             </div>
         </form>
+    </div> -->
+
+
+
+
+
+
+<form [formGroup]="addProductForm" action="#" (ngSubmit)="submit(true)" method="post" novalidate>
+    <div class="form-section">
+        <h3>Venue Details</h3>
+        <div class="row mng20">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <span class="ui-float-label">
+                        <input type="text" formControlName="name" pInputText>
+                        <label for="float-input">Person Name
+                            <em class="required">*</em>
+                        </label>
+                        <span class="error member-msg">
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-section">
+                <h3>Contact Details</h3>
+                <div class="row mng20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <span class="ui-float-label">
+                                <input type="text" formControlName="contact_person_name" pInputText>
+                                <label for="float-input">Contact Person Name
+                                    <em class="required">*</em>
+                                </label>
+                                <span class="error member-msg">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn form-btn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</form>

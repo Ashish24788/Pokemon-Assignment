@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormBuilder, FormGroup, Validators, FormControlName, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-create-product',
@@ -8,51 +7,62 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
-  public createForm: FormGroup;
-  public formErrors = {name: '', description: '', price: ''};
-  public validationMessages = {
-    name: {
-      required: 'Name is required.',
-      name: 'Name must be a valid name'
-    },
-    description: {
-      required: 'Description is required.',
-      description: 'Description must be a valid Description'
-    },
-    price: {
-      required: 'Price is required.',
-      price: 'Price must be a valid Price'
-    }
-  };
+    public addProductForm: FormGroup;
+    msgs: any[];
+    
+    @Output() onSubmit = new EventEmitter<any>();
 
-  constructor(private formBuilder: FormBuilder) { }
-
-  ngOnInit(): void {
-    this.createForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.name, Validators.minLength(6), Validators.maxLength(25)]],
-      description: ['', [Validators.required]],
-      price: ['', [Validators.required]]
-    });
-    // Binding Form Validator
-    this.createForm.valueChanges.subscribe((data) => this.onValueChanged(data));
-  }
-
-  onValueChanged(data: any) {
-    if (!this.createForm) {
-      return;
+    constructor(private formBuilder: FormBuilder) {
+        this.createProductForm();
     }
-    const form = this.createForm;
-    for (const field in this.formErrors) {
-      // Clear previous error message (if any)
-      this.formErrors[field] = '';
-      const control = form.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
+    ngOnInit() {
     }
-  }
+
+    createProductForm(name: any = '',
+        contact_person_name: any = '',
+        pricing: any = '') {
+        this.addProductForm = this.formBuilder.group({
+            name: [name,
+                {
+                    validators: Validators.compose([
+                        Validators.required,
+                        Validators.minLength(3),
+                        Validators.maxLength(30),
+                        Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
+                    ]),
+                    updateOn: 'blur'
+                }
+            ],
+            contact_person_name: [contact_person_name,
+                {
+                    validators: Validators.compose([
+                        Validators.required,
+                        Validators.minLength(3),
+                        Validators.maxLength(30),
+                        Validators.pattern(/^[a-zA-Z0-9_\s]*$/)
+                    ]),
+                    updateOn: 'blur'
+                }
+            ],
+            venue_pricing: new FormArray([])
+        });
+        let formArrayInstance: any = this.addProductForm.get('venue_pricing');
+    }
+
+    // formArrayInstance.push(this.createVenuePricingForm()) 
+    createVenuePricingForm(para1, para2): FormGroup {
+        return this.formBuilder.group({
+            data1: para1,
+            data2: para2
+        });
+    }
+    locationSelection(data) {
+      console.log("called-->", data);
+    }
+
+
+    submit(data) {
+        console.log("submit called-->", data); 
+    }
 
 }

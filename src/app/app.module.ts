@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { BaseService } from './core/base.service';
 import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -21,12 +20,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     ProductListComponent,
     ProductDetailComponent,
     PokemonListComponent,
     CreateProductComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

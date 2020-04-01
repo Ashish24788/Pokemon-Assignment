@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from "./core/user.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-assignment';
+  showLoaderImage:boolean;
+
+  constructor(private userService:UserService) {
+    this.userService.data.subscribe(data => {
+      this.showLoaderImage = data;
+    })
+  }
 }

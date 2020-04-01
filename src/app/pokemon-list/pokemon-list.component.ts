@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/user.service';
 import { Router } from '@angular/router';
+import { SYSTEM_CONSTANTS } from '../core/system.constants';
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
@@ -11,7 +12,7 @@ export class PokemonListComponent implements OnInit {
   totalCount = 0;
   totalPage = 1;
   currentPage = 1;
-  url = 'https://pokeapi.co/api/v2/pokemon/?limit=' + this.limit + '&offset=';
+  url = `${SYSTEM_CONSTANTS.POKEMON_LIST_URL}${this.limit}'&offset=`;
   listData: {
     name: string;
     url: string

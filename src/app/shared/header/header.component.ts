@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from './../../core/user.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
 
   inputData = '';
-  constructor(private router: Router) { }
+  public showTab: boolean;
+  constructor(private router: Router, private UserService: UserService) {
+    this.showTab = UserService.isAdmin;
+   }
 
   search() {
     if (this.inputData.length >= 3) {

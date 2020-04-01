@@ -6,10 +6,18 @@
             <h6 class=" text-capitalize text-truncate">{{pokemon?.name}}</h6>
         </div>
         <div class="float-right mt-2">
-            <button class="btn btn-primary mr-3" [disabled]="!respose?.previous"
-                (click)="getPokemonData(respose.previous)">Previous</button>
-            <button class="btn btn-primary" [disabled]="!respose?.next"
-                (click)="getPokemonData(respose.next)">Next</button>
+            <button class="btn btn-primary mr-3" type="button" [disabled]="!respose?.previous"
+                (click)="getPokemonData(respose.previous); previousLoading = true;">
+                <span [hidden]="!previousLoading" class="spinner-grow spinner-grow-sm" role="status"
+                    aria-hidden="true"></span>
+                {{previousLoading ? 'Loading...' : 'Previous'}}
+            </button>
+            <button class="btn btn-primary" type="button" [disabled]="!respose?.next"
+                (click)="getPokemonData(respose.next); nextLoading = true;">
+                <span [hidden]="!nextLoading" class="spinner-grow spinner-grow-sm" role="status"
+                    aria-hidden="true"></span>
+                {{nextLoading ? 'Loading...' : 'Next'}}
+            </button>
         </div>
     </div>
 </div>

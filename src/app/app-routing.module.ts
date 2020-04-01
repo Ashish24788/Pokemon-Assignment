@@ -9,15 +9,16 @@ import { ProductDetailComponent } from "./product-detail/product-detail.componen
 import { PageNotFoundComponent } from "./shared/page-not-found/page-not-found.component";
 
 import { AuthGuardComponent } from "./services/auth.service";
+import { ProductDetailAuthGuardComponent } from "./services/product-detail-auth-guard.service";
 
 const routes: Routes = [
   {
     path: 'home',
-    component: PokemonListComponent, /*canActivate:[AuthGuardComponent]*/
+    component: PokemonListComponent, 
   },
   {
     path: 'product',
-    component: ProductListComponent, /*canActivate:[AuthGuardComponent]*/
+    component: ProductListComponent, canActivate:[AuthGuardComponent]
   },
   // {
   //   path: 'pokemon',
@@ -25,11 +26,11 @@ const routes: Routes = [
   // },
   {
     path: 'detail/:name',
-    component: ProductDetailComponent, /*canActivate:[AuthGuardComponent]*/
+    component: ProductDetailComponent, canActivate:[ProductDetailAuthGuardComponent]
   },
   {
     path: 'create-product',
-    component: CreateProductComponent, /*canActivate:[AuthGuardComponent]*/
+    component: CreateProductComponent, canActivate:[AuthGuardComponent]
   },
 
   {

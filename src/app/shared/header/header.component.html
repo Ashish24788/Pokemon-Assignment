@@ -1,31 +1,32 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-    <a class="navbar-link" [routerLink]="['home']" routerLinkActive="active">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-  
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['detail']" routerLinkActive="active">Detail</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['create-product']" routerLinkActive="active">Create Product</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['product']" routerLinkActive="active">Product</a>
-        </li>
-      
-      </ul>
+  <a class="navbar-link" [routerLink]="['home']" routerLinkActive="active">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
 
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">
-          <form class="form-inline my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          </form>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['detail']" routerLinkActive="active">Detail</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['create-product']" routerLinkActive="active">Create Product</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['product']" routerLinkActive="active">Product</a>
+      </li>
+
     </ul>
-    </div>
-  </nav>
-  
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+        <form class="form-inline my-lg-0">
+          <input class="form-control mr-sm-2" type="search" [(ngModel)]="inputData" 
+          (keydown.enter)="search()" (ngModelChange)="inputData = $event.toLowerCase()"
+            placeholder="Minimum 3 characters required to search" [ngModelOptions]="{standalone: true}" aria-label="Search">
+        </form>
+      </li>
+    </ul>
+  </div>
+</nav>

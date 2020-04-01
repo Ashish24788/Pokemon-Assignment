@@ -16,6 +16,8 @@ export class PokemonListComponent implements OnInit {
       url: string
     }[]
   };
+  nextLoading = false;
+  previousLoading = false;
 
   constructor(private userService: UserService) {}
 
@@ -27,7 +29,11 @@ export class PokemonListComponent implements OnInit {
     this.userService.get(url).subscribe(
       res => this.respose = res,
       err => console.log('HTTP Error', err),
-      () => console.log('HTTP request completed.')
+      () => {
+        this.nextLoading = false;
+        this.previousLoading = false;
+        console.log('HTTP request completed.');
+      }
     );
   }
 }

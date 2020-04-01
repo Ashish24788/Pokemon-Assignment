@@ -3,10 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class UserService {
+
+    private dataSource = new BehaviorSubject<boolean>(false);
+    data = this.dataSource.asObservable();
+
     public isAdmin = true;
+    public detailData: any;
     constructor(
         private http: HttpClient,
         private router: Router
@@ -26,6 +32,7 @@ export class UserService {
             );
     }
     handleError(error) {
+        this.shoHideLoader(false);
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
             // client-side error
@@ -37,6 +44,10 @@ export class UserService {
         window.alert(errorMessage);
         return throwError(errorMessage);
     }
+
+    shoHideLoader(data: boolean){
+        this.dataSource.next(data);
+      }
 }
 
 

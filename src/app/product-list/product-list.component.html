@@ -1,11 +1,8 @@
-<div class="pokemon-list">
-    <div class="pokemon-list__cards">
-        <div class="pokemon-list__card-item" *ngFor="let pokemon of listData">
-            <img [src]="pokemon?.url" />
-                <span>{{pokemon?.name}}</span>
+<div class="p-3">
+    <div class="text-center">
+        <div class="card d-inline-block m-2" *ngFor="let pokemon of listData">
+            <img class="card-img-top" src="../../assets/blank-profile.png" alt="Card image cap">
+            <h6 class=" text-capitalize text-truncate">{{pokemon?.name}}</h6>
         </div>
     </div>
-</div>
-<div class="pokemon-list">
-    <h1 class="pokemon-list__title">There is no pokemon :(</h1>
 </div>

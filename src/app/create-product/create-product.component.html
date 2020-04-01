@@ -1,153 +1,4 @@
-<!-- <form [formGroup]="addProductForm">
-    <div class="form-section">
-        <h3>Details</h3>
-        <div>
-            <div class="form-section">
-                <div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <span class="ui-float-label">
-                                <label for="float-input">Name
-                                    <em class="required">*</em>
-                                </label>
-                                <input type="text" formControlName="name">
-                                <div style="color:red" class="form-control-feedback"
-                                        *ngIf="addProductForm.controls.name.errors && (addProductForm.controls.name.dirty || addProductForm.controls.name.touched)">
-                                    <p *ngIf="addProductForm.controls.name.errors.required">Name is required</p>
-                                    <p *ngIf="addProductForm.controls.name.errors.minLength">Name Length should be greater then 3</p>
-                                    <p *ngIf="addProductForm.controls.name.errors.pattern">Name should be alphanumeric</p>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <span class="ui-float-label">
-                                <label for="float-input">Description
-                                    <em class="required">*</em>
-                                </label>
-                                <input type="text" formControlName="description">
-                                <div style="color:red" class="form-control-feedback"
-                                        *ngIf="addProductForm.controls.description.errors && (addProductForm.controls.description.dirty || addProductForm.controls.description.touched)">
-                                    <p *ngIf="addProductForm.controls.description.errors.required">description is required</p>
-                                    <p *ngIf="addProductForm.controls.description.errors.minLength">description Length should be greater then 3</p>
-                                    <p *ngIf="addProductForm.controls.description.errors.pattern">description should be alphanumeric</p>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <span class="ui-float-label">
-                                <label for="float-input">Price
-                                    <em class="required">*</em>
-                                </label>
-                                <input type="text" formControlName="price">
-                                <div style="color:red" class="form-control-feedback"
-                                        *ngIf="addProductForm.controls.price.errors && (addProductForm.controls.price.dirty || addProductForm.controls.price.touched)">
-                                    <p *ngIf="addProductForm.controls.price.errors.required">price is required</p>
-                                    <p *ngIf="addProductForm.controls.price.errors.pattern">price with 2 decimal places only</p>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <span class="ui-float-label">
-                                <label for="float-input">Category
-                                    <em class="required">*</em>
-                                </label>
-                                <select class="custom-select" formControlName="category">
-                                    <option selected>Category</option>
-                                    <option value="1">Electronics</option>
-                                    <option value="2">Cloths</option>
-                                    <option value="3">Blankets </option>
-                                </select>
-                                <div style="color:red" class="form-control-feedback"
-                                        *ngIf="addProductForm.controls.category.errors && (addProductForm.controls.category.dirty || addProductForm.controls.category.touched)">
-                                    <p *ngIf="addProductForm.controls.category.errors.required">category is required</p>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <span class="ui-float-label">
-                                <label for="float-input">Image Url
-                                    <em class="required">*</em>
-                                </label>
-                                <input type="text" formControlName="url">
-                                <div style="color:red" class="form-control-feedback"
-                                        *ngIf="addProductForm.controls.url.errors && (addProductForm.controls.url.dirty || addProductForm.controls.url.touched)">
-                                    <p *ngIf="addProductForm.controls.url.errors.required">url is required</p>
-                                    <p *ngIf="addProductForm.controls.url.errors.pattern">url is valid</p>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <span class="ui-float-label">
-                                <label for="float-input">Phone Number
-                                    <em class="required">*</em>
-                                </label>
-                                <input type="text" formControlName="number">
-                                <div style="color:red" class="form-control-feedback"
-                                        *ngIf="addProductForm.controls.number.errors && (addProductForm.controls.number.dirty || addProductForm.controls.number.touched)">
-                                    <p *ngIf="addProductForm.controls.number.errors.required">number is required</p>
-                                    <p *ngIf="addProductForm.controls.number.errors.pattern">number is only Number</p>
-                                    <p *ngIf="addProductForm.controls.number.errors.maxLength">number is only Number</p>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <span class="ui-float-label">
-                                <label for="float-input">Phone Type
-                                    <em class="required">*</em>
-                                </label>
-                                <select class="custom-select" formControlName="phoneType">
-                                    <option selected>Phone Type</option>
-                                    <option value="1">Mobile</option>
-                                    <option value="2">Landline</option>
-                                </select>
-                                <span class="error member-msg">
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <button type="button" class="btn">Add New Product</button>
-                </div>
-                <div class="row">
-                    <div class="text-right">
-                        <button type="button" [disabled]="addProductForm.invalid" class="btn form-btn" (click)="submit()">Submit</button>
-                    </div>
-                    <div class="text-right">
-                        <button type="button" class="btn form-btn" (click) = "reset()">Reset</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</form> -->
-
 <div class="container">
-    <h3>Angular 9 FormArray Example</h3>
     <form [formGroup]="addProductForm" (ngSubmit)="onFormSubmit()">
         <div formArrayName="form">
             <div *ngFor="let product of contactFormGroup.controls; let i = index;" class="form-group">
@@ -186,17 +37,14 @@
                                 *ngIf="product?.controls['price']?.touched && product?.controls['price']?.hasError('required')">
                                 price is required! </span>
                             <span class="text-danger"
-                                *ngIf="product?.controls['price']?.touched && product?.controls['price']?.hasError('maxlength')">
-                                Max length is 2 </span>
-                            <!-- <span class="text-danger"
                                 *ngIf="product?.controls['price']?.touched && product?.controls['price']?.hasError('pattern')">
-                                Please enter alphanumeric value </span> -->
+                                Please enter 2 decimal </span>
                         </div>
                     </div>
                     <div class="form-group row col-12">
                         <div class="form-group col-4">
                             <label>Category</label>
-                            <select (change)="changedContactType(i)" class="form-control" formControlName="category">
+                            <select class="form-control" formControlName="category">
                                 <option value="electronics">Electronics</option>
                                 <option value="cloths">Cloths</option>
                                 <option value="blankets">Blankets </option>
@@ -214,11 +62,6 @@
                             <span class="text-danger"
                                 *ngIf="product?.controls['imageURL']?.touched && product?.controls['imageURL']?.hasError('pattern')">
                                 Please enter valid URL </span>
-
-                            <!-- <span class="text-danger"
-                                *ngIf="getContactsFormGroup(i).controls['value'].touched && getContactsFormGroup(i).controls['value'].hasError('required')">
-                                Email/Phone no is required!
-                            </span> -->
                         </div>
                         <div class="form-group col-2">
                             <label>Phone.</label>
@@ -229,20 +72,19 @@
                             <span class="text-danger"
                                 *ngIf="product?.controls['phone']?.touched && product?.controls['phone']?.hasError('maxlength')">
                                 Max length is 10 </span>
+                            <span class="text-danger"
+                                *ngIf="product?.controls['phone']?.touched && product?.controls['phone']?.hasError('pattern')">
+                                Please enter valid phone number </span>
                         </div>
                         <div class="form-group col-2">
                             <label>Select</label>
-                            <select (change)="changedContactType(i)" class="form-control" formControlName="select">
+                            <select class="form-control" formControlName="select">
                                 <option value="mobile">Mobile</option>
                                 <option value="landline">Landline</option>
                             </select>
                         </div>
                     </div>
                 </div>
-                <!-- <input [formControlName]="idx" placeholder="Enter a Name" class="form-control">
-          <label *ngIf="name.invalid" [ngClass] = "'error'"> Name is required. </label>
-          <button type="button" (click)="addNameField()" class="btn btn-success" [ngClass] = "'pad'">Add More Names</button>
-          <button (click)="deleteNameField(idx)" class="btn btn-danger">Delete</button> -->
             </div>
             <div class="card-body">
                 <div class="col-12">

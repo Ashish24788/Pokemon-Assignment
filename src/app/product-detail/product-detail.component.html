@@ -1,92 +1,50 @@
-<div class="pokemon-detail">
-    <div class="pokemon-detail__header">
-      <img [src]="detailData?.sprites?.front_default"/>
-      <div class="kt-subheader__main">
-        <h1 class="kt-subheader__title">
-            {{detailData?.name}}
-        </h1>
-        <div class="subheader">
-          <span *ngFor="let type of detailData?.types">{{type.type.name}}</span>
-        </div>
+<div class="container text-center my-3">
+  <div class="header title text-capitalize py-3">{{response.name}}</div>
+  <div class="px-5 py-3">
+    <div class="row my-3">
+      <div class="col-2"></div>
+      <div class="col-6">
+        <span class="type text-uppercase px-2 pb-1 font-weight-bold border text-white" [ngClass]="type?.type?.name"
+          *ngFor="let type of response.types">{{type?.type?.name}}</span>
       </div>
+      <h3 class="col-4 text-right">#{{response.id}}</h3>
     </div>
-    <div class="pokemon-detail__body">
-      <div class="pokemon-detail__overview-card">
-        <div class="pokemon-detail__card-box">
-          <div class="counter">
-            <div class="counter-label">Order</div>
-            <div class="counter-number-group text-truncate">
-              <span class="counter-number">
-                  {{detailData?.order}}
-                </span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="counter">
-            <div class="counter-label">Weight</div>
-            <div class="counter-number-group text-truncate">
-              <span class="counter-number">
-                  {{detailData?.weight}}
-                </span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="counter">
-            <div class="counter-label">Height</div>
-            <div class="counter-number-group text-truncate">
-              <span class="counter-number">
-                  {{detailData?.height}}
-                </span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="counter">
-            <div class="counter-label">Base Experience</div>
-            <div class="counter-number-group text-truncate">
-              <span class="counter-number">
-                  {{detailData?.base_experience}}
-                </span>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div class="pokemon-detail__detail-card">
-        <div class="pokemon-detail__detail-card-head">
-          <h3>Abilities</h3>
-        </div>
-        <div class="pokemon-detail__detail-card-body">
-          <div class="pokemon-detail__detail-card-item" *ngFor="let ability of detailData?.abilities">
-            {{ability?.ability?.name}}
-          </div>
-        </div>
-      </div>
-  
-      <div class="pokemon-detail__detail-card">
-        <div class="pokemon-detail__detail-card-head">
-          <h3>Stats</h3>
-        </div>
-        <div class="pokemon-detail__detail-card-body">
-          <div class="pokemon-detail__detail-card-item" *ngFor="let stat of detailData?.stats">
-            {{stat?.stat?.name}}
+    <div class="row px-5">
+      <img [src]="response?.sprites?.front_default" class="col-3 img-responsive" alt="">
+      <div class="col-8">
+        <div class="row my-1" *ngFor="let stat of response.stats">
+          <div class="col-3 text-capitalize text-left">{{stat.stat.name}}</div>
+          <div class="col-5 p-0 progress">
+            <div class="progress-bar bg-success text-left" [style.width]="stat.base_stat + '%'">
+              &nbsp;&nbsp;&nbsp;{{stat.base_stat}}</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="pokemon-detail__detail-card" >
-      <div class="pokemon-detail__detail-card-head">
-        <h3>Moves</h3>
-      </div>
-      <div class="pokemon-detail__detail-card-body">
-        <div class="pokemon-detail__detail-card-item" *ngFor="let move of detailData?.moves">
-          {{move?.move?.name}}
-        </div>
-      </div>
-    </div>
-    <div class="pokemon-detail__not-found">
-      Pokemon Not Found :(
+    <div class="text-left">
+      <h6>{{generaObject.genus}}</h6>
+      <p>{{flavorObject.flavor_text}}</p>
     </div>
   </div>
+  <div class="header title py-2 text-left  pl-3">Profile</div>
+  <div class="px-5 py-3">
+    <div class="row">
+      <div class="row col-6" *ngIf="response.height">
+        <div class="col-2 font-weight-bold">Height:</div>
+        <div class="col-4 text-left">{{response.height/10}} m</div>
+      </div>
+      <div class="row col-6" *ngIf="response.weight">
+        <div class="col-2 font-weight-bold">Weight:</div>
+        <div class="col-4 text-left">{{response.weight/10}} kg</div>
+      </div>
+      <div class="row col-6" *ngIf="response.abilities?.length">
+        <div class="col-2 font-weight-bold">Abilities:</div>
+        <div class="col-4 text-left">
+          <span class="text-capitalize ability" *ngFor="let ab of response.abilities">{{ab.ability.name}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header title py-2 text-left  pl-3 mt-3">Evolutions</div>
+  <div class="header title py-2 text-left  pl-3 mt-3">Damage When Attacked</div>
+</div>

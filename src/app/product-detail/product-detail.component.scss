@@ -1,0 +1,27 @@
+.header {
+    background: #4c8c2c;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.type {
+    margin-right: 10px;
+    &.grass {
+        background: #6db0a6;
+    }
+    &.poison {
+        background: #923a92;
+    }
+    &:last-of-type {
+        margin-right: 0px;
+    }
+}
+
+.ability {
+    font-size: 0.8rem;
+    &:not(:last-child) {
+        &::after {
+            content: ', ';
+        }
+    }
+}

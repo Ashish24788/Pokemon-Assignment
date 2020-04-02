@@ -1,5 +1,6 @@
 .app-contain {
-    margin-top: 60px;
+    position: relative;
+    top: 60px;
 }
 
 .parentDisable {

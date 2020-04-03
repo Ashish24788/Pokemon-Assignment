@@ -19,7 +19,6 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.response = this.userService.detailData || {};
-    console.log(this.response);
     if (this.response.species && this.response.species.url) {
       this.getSpeciesData();
       this.getDamageData();
@@ -42,7 +41,6 @@ export class ProductDetailComponent implements OnInit {
     this.response.moves.map((data) => {
       this.userService.get(data.move.url).subscribe(res => {
         this.damageData[res.damage_class.name] = true;
-        // console.log('res', res.damage_class.name);
       });
     });
   }
@@ -63,7 +61,6 @@ export class ProductDetailComponent implements OnInit {
         }
       })).subscribe(ob => {
         this.evolutionData.imageURL = ob.sprites.front_default;
-        // console.log('newSpeciesData', evolutionData);
       });
   }
 

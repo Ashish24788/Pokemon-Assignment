@@ -4,7 +4,7 @@
     <div class="row my-3">
       <div class="col-md-2"></div>
       <div class="col-md-6">
-        <span class="type text-uppercase px-2 pb-1 font-weight-bold border text-white" [ngClass]="type?.type?.name"
+        <span class="type text-color text-uppercase px-2 pb-1 font-weight-bold border text-white" [ngClass]="type?.type?.name"
           *ngFor="let type of response.types">{{type?.type?.name}}</span>
       </div>
       <h3 class="col-4 text-right">#{{response.id}}</h3>
@@ -86,7 +86,7 @@
   <div class="px-5 py-3">
     <div class="row col-12">
         <div class="col-md-6 mb-1" *ngFor="let damaged of damageData | keyvalue">
-          <div class="col-md-6 text-uppercase px-2 pb-1 font-weight-bold border damage text-left pl-2" [ngClass]="damaged.key">
+          <div class="col-md-6 text-uppercase px-2 pb-1 font-weight-bold border text-color text-left pl-2" [ngClass]="damaged.key">
             {{damaged.key}}
           </div>
       </div>

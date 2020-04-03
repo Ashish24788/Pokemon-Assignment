@@ -21,10 +21,6 @@ const routes: Routes = [
     path: 'product',
     component: ProductListComponent, canActivate:[ProductListGuard]
   },
-  // {
-  //   path: 'pokemon',
-  //   component: PokemonListComponent,
-  // },
   {
     path: 'detail/:name',
     component: ProductDetailComponent, canActivate:[ProductDetailAuthGuardComponent]

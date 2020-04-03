@@ -6,29 +6,26 @@
 
 .type {
     margin-right: 10px;
+    
+    &:last-of-type {
+        margin-right: 0px;
+    }
+}
+.text-color {
+    background: black;
     &.grass {
         background: #6db0a6;
     }
     &.poison {
         background: #923a92;
     }
-    &:last-of-type {
-        margin-right: 0px;
-    }
-}
-
-.pokemon-image {
-    width: 120px;
-}
-
-.damage {
-    &.physical {
+    &.physical, &.psychic {
         background: #f73670;
     }
-    &.special {
+    &.special, &.ground {
         background: #dbb54d;
     }
-    &.status {
+    &.status, &.flying {
         background: #8e6feb;
     }
     &.fire {
@@ -52,6 +49,10 @@
     &.grass {
         background: #69c23d;
     }
+}
+
+.pokemon-image {
+    width: 120px;
 }
 
 .ability {

@@ -52,13 +52,12 @@ export class CreateProductComponent implements OnInit {
 
   onFormSubmit() {
     const productData = JSON.parse(localStorage.getItem('addProductForm'));
-    let productDataList = this.addProductForm && this.addProductForm.value && this.addProductForm.value.form
-    
-    if(productData && productData.length > 0) {
+    let productDataList = this.addProductForm && this.addProductForm.value && this.addProductForm.value.form;
+    if (productData && productData.length > 0) {
       productDataList = [...productDataList, ...productData];
     }
     localStorage.setItem('addProductForm', JSON.stringify(productDataList).concat());
-     this.productForm();
+    this.productForm();
   }
 
   resetForm() {

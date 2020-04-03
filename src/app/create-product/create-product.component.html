@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container my-3">
     <form [formGroup]="addProductForm" (ngSubmit)="onFormSubmit()">
         <div formArrayName="form">
             <div *ngFor="let product of contactFormGroup.controls; let i = index;" class="form-group">
                 <div [formGroupName]="i" class="row">
                     <div class="form-group row col-12">
-                        <div class="form-group col-4">
-                            <label>Name.</label>
+                        <div class="form-group col-md-4">
+                            <label>Name:</label>
                             <input class="form-control" formControlName="name" type="text" />
                             <span class="text-danger"
                                 *ngIf="product?.controls['name']?.touched && product?.controls['name']?.hasError('required')">
@@ -17,8 +17,8 @@
                                 *ngIf="product?.controls['name']?.touched && product?.controls['name']?.hasError('pattern')">
                                 Please enter alphanumeric value </span>
                         </div>
-                        <div class="form-group col-4">
-                            <label>Description.</label>
+                        <div class="form-group col-md-4">
+                            <label>Description:</label>
                             <input class="form-control" formControlName="description" type="text" />
                             <span class="text-danger"
                                 *ngIf="product?.controls['description']?.touched && product?.controls['description']?.hasError('required')">
@@ -30,8 +30,8 @@
                                 *ngIf="product?.controls['description']?.touched && product?.controls['description']?.hasError('pattern')">
                                 Please enter alphanumeric value </span>
                         </div>
-                        <div class="form-group col-4">
-                            <label>Price.</label>
+                        <div class="form-group col-md-4">
+                            <label>Price:</label>
                             <input class="form-control" formControlName="price" type="text" />
                             <span class="text-danger"
                                 *ngIf="product?.controls['price']?.touched && product?.controls['price']?.hasError('required')">
@@ -42,8 +42,8 @@
                         </div>
                     </div>
                     <div class="form-group row col-12">
-                        <div class="form-group col-4">
-                            <label>Category</label>
+                        <div class="form-group col-md-4">
+                            <label>Category:</label>
                             <select class="form-control" formControlName="category">
                                 <option value="electronics">Electronics</option>
                                 <option value="cloths">Cloths</option>
@@ -53,8 +53,8 @@
                                 *ngIf="product?.controls['category']?.touched && product?.controls['category']?.hasError('required')">
                                 Category is required! </span>
                         </div>
-                        <div class="form-group col-4">
-                            <label>Image URL</label>
+                        <div class="form-group col-md-4">
+                            <label>Image URL:</label>
                             <input class="form-control" formControlName="imageURL" type="text" />
                             <span class="text-danger"
                                 *ngIf="product?.controls['imageURL']?.touched && product?.controls['imageURL']?.hasError('required')">
@@ -63,8 +63,8 @@
                                 *ngIf="product?.controls['imageURL']?.touched && product?.controls['imageURL']?.hasError('pattern')">
                                 Please enter valid URL </span>
                         </div>
-                        <div class="form-group col-2">
-                            <label>Phone.</label>
+                        <div class="form-group col-md-2">
+                            <label>Phone:</label>
                             <input class="form-control" formControlName="phone" type="text" />
                             <span class="text-danger"
                                 *ngIf="product?.controls['phone']?.touched && product?.controls['phone']?.hasError('required')">
@@ -76,8 +76,8 @@
                                 *ngIf="product?.controls['phone']?.touched && product?.controls['phone']?.hasError('pattern')">
                                 Please enter valid phone number </span>
                         </div>
-                        <div class="form-group col-2">
-                            <label>Select</label>
+                        <div class="form-group col-md-2">
+                            <label>Select:</label>
                             <select class="form-control" formControlName="select">
                                 <option value="mobile">Mobile</option>
                                 <option value="landline">Landline</option>
@@ -86,16 +86,15 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="col-12">
-                    <button class="btn btn-primary m-1" [disabled]="!(productList?.length < 5)" type="button"
-                        (click)="addProduct()"> Add New Product </button>
-                </div>
-            </div>
         </div>
-        <div>
-            <button class="btn btn-secondary m-1" type="button" (click)="resetForm()"> Reset </button>
+        <div class="text-right col-12">
+            <button class="btn btn-primary m-1" [disabled]="!(productList?.length < 5)" type="button"
+                (click)="addProduct()"> Add New Product </button>
+        </div>
+        <div class="text-right col-12 mt-5">
+            <button class="btn btn-secondary mr-3" type="button" (click)="resetForm()"> Reset </button>
             <button type="submit" [disabled]="!addProductForm.valid" class="btn btn-primary">Send</button>
         </div>
     </form>
+    
 </div>

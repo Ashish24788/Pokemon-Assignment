@@ -12,7 +12,8 @@ export class ProductDetailComponent implements OnInit {
   flavorObject: any = {};
   generaObject: any = {};
   speciesData: any = {};
-  damageData: any = [];
+  damageData: any = {};
+  evolutionData: any = {};
 
   constructor(private userService: UserService) { }
 
@@ -37,31 +38,33 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getDamageData() {
+    this.damageData = {};
     this.response.moves.map((data) => {
       this.userService.get(data.move.url).subscribe(res => {
-        this.damageData.push(res.damage_class.name);
+        this.damageData[res.damage_class.name] = true;
         // console.log('res', res.damage_class.name);
       });
-    })
+    });
   }
 
   getEvolutionChainData(url) {
-    const newSpeciesData: any = {};
+    this.evolutionData = {};
     this.userService
       .get(url)
       .pipe(mergeMap(character => {
-        newSpeciesData['name'] = character.chain.evolves_to[0].species.name;
-        newSpeciesData['minLevel'] = character.chain.evolves_to[0].evolution_details[0].min_level;
-        return this.userService.get(`https://pokeapi.co/api/v2/pokemon/${newSpeciesData['name']}`);
+        character = character && character.chain && character.chain.evolves_to && character.chain.evolves_to[0];
+        if (character) {
+          this.evolutionData.name = character.species.name;
+          this.evolutionData.level = character &&
+                                    character.evolution_details &&
+                                    character.evolution_details[0] &&
+                                    character.evolution_details[0].min_level;
+          return this.userService.get('https://pokeapi.co/api/v2/pokemon/' + this.evolutionData.name);
+        }
       })).subscribe(ob => {
-        newSpeciesData['imageURL'] = ob.sprites.front_default;
-        console.log('newSpeciesData', newSpeciesData);
+        this.evolutionData.imageURL = ob.sprites.front_default;
+        // console.log('newSpeciesData', evolutionData);
       });
-    // this.userService
-    //   .get(url)
-    //   .pipe(mergeMap(character =>
-    //     this.userService.get(`https://pokeapi.co/api/v2/pokemon/${character.chain.evolves_to[0].species.name}`)))
-    //   .subscribe(ob => console.log('sa', ob));
   }
 
 }

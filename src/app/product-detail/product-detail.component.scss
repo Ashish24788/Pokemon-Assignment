@@ -17,8 +17,45 @@
     }
 }
 
+.pokemon-image {
+    width: 120px;
+}
+
+.damage {
+    &.physical {
+        background: #f73670;
+    }
+    &.special {
+        background: #dbb54d;
+    }
+    &.status {
+        background: #8e6feb;
+    }
+    &.fire {
+        background: #ed6d12;
+    }
+    &.ice {
+        background: #7ecece;
+    }
+    &.fighting {
+        background: #ae2a24;
+    }
+    &.fairy {
+        background: #e87890;
+    }
+    &.water {
+        background: #4578ed;
+    }
+    &.electric {
+        background: #f6c913;
+    }
+    &.grass {
+        background: #69c23d;
+    }
+}
+
 .ability {
-    font-size: 0.8rem;
+    // font-size: 0.8rem;
     &:not(:last-child) {
         &::after {
             content: ', ';

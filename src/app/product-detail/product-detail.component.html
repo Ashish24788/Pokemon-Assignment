@@ -37,14 +37,48 @@
         <div class="col-2 font-weight-bold">Weight:</div>
         <div class="col-4 text-left">{{response.weight/10}} kg</div>
       </div>
+      <div class="row col-6" *ngIf="speciesData.capture_rate">
+        <div class="col-2 font-weight-bold">Catch Rate:</div>
+        <div class="col-4 text-left">{{speciesData.capture_rate}} %</div>
+      </div>
+      <div class="row col-6" *ngIf="speciesData.gender_rate">
+        <div class="col-2 font-weight-bold">Gender Ratios:</div>
+        <div class="col-4 text-left">{{speciesData.gender_rate}} %</div>
+      </div>
+      <div class="row col-6" *ngIf="speciesData.egg_groups?.length">
+        <div class="col-2 font-weight-bold">Egg Groups:</div>
+        <div class="col-4 text-left">
+            <span class="text-capitalize ability" *ngFor="let eggGrp of speciesData.egg_groups">{{eggGrp.name}}</span>
+          </div>
+      </div>
+      <div class="row col-6" *ngIf="speciesData.hatch_counter">
+        <div class="col-2 font-weight-bold">Hatch Steps:</div>
+        <div class="col-4 text-left">{{speciesData.hatch_counter}} </div>
+      </div>
       <div class="row col-6" *ngIf="response.abilities?.length">
         <div class="col-2 font-weight-bold">Abilities:</div>
         <div class="col-4 text-left">
           <span class="text-capitalize ability" *ngFor="let ab of response.abilities">{{ab.ability.name}}</span>
         </div>
       </div>
+      <div class="row col-6">
+        <div class="col-2 font-weight-bold">EVs:</div>
+        <div class="col-4 text-left">10</div>
+      </div>
     </div>
   </div>
   <div class="header title py-2 text-left  pl-3 mt-3">Evolutions</div>
+  <div class="row px-5">
+    <img [src]="response?.sprites?.front_default" class="col-3 img-responsive" alt="">
+  </div>
   <div class="header title py-2 text-left  pl-3 mt-3">Damage When Attacked</div>
+  <div class="px-5 py-3">
+    <div class="row">
+      <div class="row col-6" *ngIf="damageData?.length">
+        <div class="col-4 text-left">
+          <span class="text-capitalize ability" *ngFor="let damaged of damageData">{{damaged}}</span>
+        </div>
+      </div>
+      </div>
+    </div>
 </div>

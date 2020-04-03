@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from "./shared/page-not-found/page-not-found.co
 
 import { AuthGuardComponent } from "./services/auth.service";
 import { ProductDetailAuthGuardComponent } from "./services/product-detail-auth-guard.service";
+import { ProductListGuard } from './services/product-list-guard';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'product',
-    component: ProductListComponent, canActivate:[AuthGuardComponent]
+    component: ProductListComponent, canActivate:[ProductListGuard]
   },
   // {
   //   path: 'pokemon',

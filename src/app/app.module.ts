@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuardComponent } from "./services/auth.service";
 import { ProductDetailAuthGuardComponent } from "./services/product-detail-auth-guard.service";
+import { ProductListGuard } from "./services/product-list-guard";
 import { UserService } from "./core/user.service";
 
 @NgModule({
@@ -38,7 +39,7 @@ import { UserService } from "./core/user.service";
     ReactiveFormsModule
   ],
   providers: [
-    AuthGuardComponent, ProductDetailAuthGuardComponent, UserService],
+    AuthGuardComponent, ProductDetailAuthGuardComponent, UserService, ProductListGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,11 +13,11 @@ export class HeaderComponent {
   public showTab: boolean;
   constructor(private router: Router, private UserService: UserService) {
     this.showTab = UserService.isAdmin;
-   }
-
+  }
   search() {
     if (this.inputData.length >= 3) {
-      this.router.navigate(['/detail/', this.inputData]);
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+        this.router.navigate(['/detail/', this.inputData]));
     }
   }
 }

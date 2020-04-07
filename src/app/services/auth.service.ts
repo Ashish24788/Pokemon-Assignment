@@ -10,7 +10,7 @@ import { UserService } from '../core/user.service';
 @Injectable()
 export class AuthGuardComponent implements CanActivate {
   constructor(private router: Router, private userService: UserService) {}
-  adminRoutes: Array<any> = ['/product', '/create-product'];
+  adminRoutes: Array<any> = ['/product-list', '/create-product'];
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     if (this.userService.isAdmin) {
       return true;

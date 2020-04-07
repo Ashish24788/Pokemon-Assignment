@@ -9,7 +9,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 import { AuthGuardComponent } from './services/auth.service';
-import { ProductDetailAuthGuardComponent } from './services/product-detail-auth-guard.service';
+import { ProductDetailAuthGuard } from './services/product-detail-auth-guard.service';
 import { ProductListGuard } from './services/product-list-guard';
 
 const routes: Routes = [
@@ -18,14 +18,14 @@ const routes: Routes = [
     component: PokemonListComponent,
   },
   {
-    path: 'product',
+    path: 'product-list',
     component: ProductListComponent,
     canActivate: [ProductListGuard],
   },
   {
     path: 'detail/:name',
     component: ProductDetailComponent,
-    canActivate: [ProductDetailAuthGuardComponent],
+    canActivate: [ProductDetailAuthGuard],
   },
   {
     path: 'create-product',

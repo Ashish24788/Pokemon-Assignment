@@ -33,7 +33,6 @@ export class UserService {
   }
 
   handleError(error) {
-    // this.shoHideLoader(false);
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error

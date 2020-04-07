@@ -6,7 +6,7 @@ import { SYSTEM_CONSTANTS } from '../core/system.constants';
 import { finalize } from 'rxjs/operators';
 
 @Injectable()
-export class ProductDetailAuthGuardComponent implements CanActivate {
+export class ProductDetailAuthGuard implements CanActivate {
   constructor(private userService: UserService) {}
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return Observable.create((observer) => {

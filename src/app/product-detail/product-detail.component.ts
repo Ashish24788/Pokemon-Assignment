@@ -5,7 +5,7 @@ import { mergeMap } from 'rxjs/operators';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss']
+  styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit {
   response: any = {};
@@ -15,7 +15,7 @@ export class ProductDetailComponent implements OnInit {
   damageData: any = {};
   evolutionData: any = {};
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.response = this.userService.detailData || {};
@@ -26,11 +26,16 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getSpeciesData() {
-    this.userService.get(this.response.species.url).subscribe(res => {
+    this.userService.get(this.response.species.url).subscribe((res) => {
       this.speciesData = res;
-      this.flavorObject = res.flavor_text_entries.find(ob => ob.language.name === 'en') || {};
-      this.generaObject = res.genera.find(ob => ob.language.name === 'en') || {};
-      if (this.speciesData.evolution_chain && this.speciesData.evolution_chain.url) {
+      this.flavorObject =
+        res.flavor_text_entries.find((ob) => ob.language.name === 'en') || {};
+      this.generaObject =
+        res.genera.find((ob) => ob.language.name === 'en') || {};
+      if (
+        this.speciesData.evolution_chain &&
+        this.speciesData.evolution_chain.url
+      ) {
         this.getEvolutionChainData(this.speciesData.evolution_chain.url);
       }
     });
@@ -39,7 +44,7 @@ export class ProductDetailComponent implements OnInit {
   getDamageData() {
     this.damageData = {};
     this.response.moves.map((data) => {
-      this.userService.get(data.move.url).subscribe(res => {
+      this.userService.get(data.move.url).subscribe((res) => {
         this.damageData[res.damage_class.name] = true;
       });
     });
@@ -49,19 +54,28 @@ export class ProductDetailComponent implements OnInit {
     this.evolutionData = {};
     this.userService
       .get(url)
-      .pipe(mergeMap(character => {
-        character = character && character.chain && character.chain.evolves_to && character.chain.evolves_to[0];
-        if (character) {
-          this.evolutionData.name = character.species.name;
-          this.evolutionData.level = character &&
-                                    character.evolution_details &&
-                                    character.evolution_details[0] &&
-                                    character.evolution_details[0].min_level;
-          return this.userService.get('https://pokeapi.co/api/v2/pokemon/' + this.evolutionData.name);
-        }
-      })).subscribe(ob => {
+      .pipe(
+        mergeMap((character) => {
+          character =
+            character &&
+            character.chain &&
+            character.chain.evolves_to &&
+            character.chain.evolves_to[0];
+          if (character) {
+            this.evolutionData.name = character.species.name;
+            this.evolutionData.level =
+              character &&
+              character.evolution_details &&
+              character.evolution_details[0] &&
+              character.evolution_details[0].min_level;
+            return this.userService.get(
+              'https://pokeapi.co/api/v2/pokemon/' + this.evolutionData.name
+            );
+          }
+        })
+      )
+      .subscribe((ob) => {
         this.evolutionData.imageURL = ob.sprites.front_default;
       });
   }
-
 }

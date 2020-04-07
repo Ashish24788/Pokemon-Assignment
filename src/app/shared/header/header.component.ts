@@ -5,10 +5,9 @@ import { UserService } from './../../core/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-
   inputData = '';
   public showTab: boolean;
   constructor(private router: Router, private UserService: UserService) {
@@ -16,8 +15,9 @@ export class HeaderComponent {
   }
   search() {
     if (this.inputData.length >= 3) {
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-        this.router.navigate(['/detail/', this.inputData]));
+      this.router
+        .navigateByUrl('/', { skipLocationChange: true })
+        .then(() => this.router.navigate(['/detail/', this.inputData]));
     }
   }
 }

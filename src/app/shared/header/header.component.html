@@ -6,16 +6,20 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['home']" routerLinkActive="active">Home</a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['home']"
+          routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['detail']" routerLinkActive="active">Detail</a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['detail']"
+          routerLinkActive="active">Detail</a>
       </li>
-      <li *ngIf = 'showTab' class="nav-item">
-        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['create-product']" routerLinkActive="active">Create Product</a>
+      <li *ngIf='showTab' class="nav-item">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['create-product']"
+          routerLinkActive="active">Create Product</a>
       </li>
-      <li *ngIf = 'showTab' class="nav-item">
-        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['product']" routerLinkActive="active">Product List</a>
+      <li *ngIf='showTab' class="nav-item">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['product']"
+          routerLinkActive="active">Product List</a>
       </li>
 
     </ul>
@@ -24,9 +28,9 @@
   <ul class="nav navbar-nav navbar-right">
     <li class="nav-item">
       <form class="form-inline my-lg-0">
-        <input class="form-control mr-sm-2" type="search" [(ngModel)]="inputData" 
-        (keydown.enter)="search()" (ngModelChange)="inputData = $event.toLowerCase()"
-          placeholder="Minimum 3 characters required to search" [ngModelOptions]="{standalone: true}" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" [(ngModel)]="inputData" (keydown.enter)="search()"
+          (ngModelChange)="inputData = $event.toLowerCase()" placeholder="Minimum 3 characters required to search"
+          [ngModelOptions]="{standalone: true}" aria-label="Search">
       </form>
     </li>
   </ul>

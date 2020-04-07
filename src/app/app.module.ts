@@ -15,10 +15,10 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AuthGuardComponent } from "./services/auth.service";
-import { ProductDetailAuthGuardComponent } from "./services/product-detail-auth-guard.service";
-import { ProductListGuard } from "./services/product-list-guard";
-import { UserService } from "./core/user.service";
+import { AuthGuardComponent } from './services/auth.service';
+import { ProductDetailAuthGuardComponent } from './services/product-detail-auth-guard.service';
+import { ProductListGuard } from './services/product-list-guard';
+import { UserService } from './core/user.service';
 
 @NgModule({
   declarations: [
@@ -36,10 +36,14 @@ import { UserService } from "./core/user.service";
     CoreModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
-    AuthGuardComponent, ProductDetailAuthGuardComponent, UserService, ProductListGuard],
-  bootstrap: [AppComponent]
+    AuthGuardComponent,
+    ProductDetailAuthGuardComponent,
+    UserService,
+    ProductListGuard,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

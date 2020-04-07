@@ -7,14 +7,18 @@ import { finalize } from 'rxjs/operators';
 
 @Injectable()
 export class ProductDetailAuthGuardComponent implements CanActivate {
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    return Observable.create(observer => {
+    return Observable.create((observer) => {
       this.userService.showLoader(true);
-      this.userService.get(SYSTEM_CONSTANTS.PRODUCT_DETAIL_URL + route.params.name)
-        .pipe(finalize(() => {
-          this.userService.showLoader(false);
-        })).subscribe(res => {
+      this.userService
+        .get(SYSTEM_CONSTANTS.PRODUCT_DETAIL_URL + route.params.name)
+        .pipe(
+          finalize(() => {
+            this.userService.showLoader(false);
+          })
+        )
+        .subscribe((res) => {
           if (res != null) {
             this.userService.detailData = res;
             observer.next(true);

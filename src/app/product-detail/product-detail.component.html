@@ -4,8 +4,8 @@
     <div class="row my-3">
       <div class="col-md-2"></div>
       <div class="col-md-6">
-        <span class="type text-color text-uppercase px-2 pb-1 font-weight-bold border text-white" [ngClass]="type?.type?.name"
-          *ngFor="let type of response.types">{{type?.type?.name}}</span>
+        <span class="type text-color text-uppercase px-2 pb-1 font-weight-bold border text-white"
+          [ngClass]="type?.type?.name" *ngFor="let type of response.types">{{type?.type?.name}}</span>
       </div>
       <h3 class="col-4 text-right">#{{response.id}}</h3>
     </div>
@@ -48,8 +48,8 @@
       <div class="row col-md-6" *ngIf="speciesData.egg_groups?.length">
         <div class="col-md-6 font-weight-bold text-left">Egg Groups:</div>
         <div class="col-md-6 text-left">
-            <span class="text-capitalize ability" *ngFor="let eggGrp of speciesData.egg_groups">{{eggGrp.name}}</span>
-          </div>
+          <span class="text-capitalize ability" *ngFor="let eggGrp of speciesData.egg_groups">{{eggGrp.name}}</span>
+        </div>
       </div>
       <div class="row col-md-6" *ngIf="speciesData.hatch_counter">
         <div class="col-md-6 font-weight-bold text-left">Hatch Steps:</div>
@@ -74,7 +74,8 @@
         <img [src]="response?.sprites?.front_default" class="img-responsive pokemon-image" alt="">
       </div>
       <div class="col-4">
-        <img src="../../assets/green-arrow-png-16658.png" style="margin-top: 34px;" class="img-responsive pokemon-image" alt="">
+        <img src="../../assets/green-arrow-png-16658.png" style="margin-top: 34px;" class="img-responsive pokemon-image"
+          alt="">
       </div>
       <div class="col-4">
         <img [src]="evolutionData.imageURL" class="img-responsive pokemon-image" alt="">
@@ -87,11 +88,12 @@
   <div class="header title py-2 text-left  pl-3 mt-3">Damage When Attacked</div>
   <div class="px-5 py-3">
     <div class="row col-12">
-        <div class="col-md-6 mb-1" *ngFor="let damaged of damageData | keyvalue">
-          <div class="col-md-6 text-uppercase px-2 pb-1 font-weight-bold border text-color text-left pl-2" [ngClass]="damaged.key">
-            {{damaged.key}}
-          </div>
-      </div>
+      <div class="col-md-6 mb-1" *ngFor="let damaged of damageData | keyvalue">
+        <div class="col-md-6 text-uppercase px-2 pb-1 font-weight-bold border text-color text-left pl-2"
+          [ngClass]="damaged.key">
+          {{damaged.key}}
+        </div>
       </div>
     </div>
+  </div>
 </div>

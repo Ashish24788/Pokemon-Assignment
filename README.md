@@ -1,20 +1,44 @@
-# ashish24788-gmail.com
-Angular Pokemon Assignment
+# angular-pokemon-assignment
 
-Pokemon details and Listing Application is build in Angular 9 :
+Pokemon details and Listing Application is used to show pokemon list, pokemon details, create product and product list please find the below features of this application.
+  - Show all Pokemons in Home tab.
+  - Able to select a pokemon from list and show its detail imformation in detail section.
+  - Show all Pokemons Details in Details tab.
+  - Able to add new product, add maximum 5 product at a time.
+  - Show all new products in product list tab.
+  - Able to search.
+  - At Home tab next and previous button used to show next and previous pokemons.
+  - Tabs rendering depends on isAdmin flag which is present in user.service.ts.
+  - If isAdmin = true, render all four tabs and if it is false only home and detail tab render.
+  - All the information save from create product is store in localstorage.
+  - If there are not any product present in localstore product list tab is not active using canActivateGuard.
+  - During searching if no record found it should not redirect to detail tab using guards.
+  - we show loader during Api calls.
+  - All page and design are responsive for all mobile screens.
+  
+> The goal of this project to show pokemon list and render pokemons detail and create products and render them in product list.
+#### Create product has following things:
+ - Field type
+ - Validations(required, min, max, regx(for url, number and decimal))
+ - Save button
+ - Reset Button
+ - Add New Product Button
 
-1) This app basically have four tabs Home, Details, Create Product and Product List and a search component.
+### Tech
 
-2) By default Home tab is in Active state, if user navigate to different tab then relevent tab become highlighted.
+* [Angular 9] - HTML enhanced for web apps!
+* [BootStrap 4] - UI components
 
-3) In User.service.ts isAdmin flag is used which basically controls the rendering of tabs. If isAdmin is true then all the four tabs render, is isAdmin sets to false then only home and details tab render.
+### Installation
+Take clone from
+```
+$ git clone https://github.com/Abhishekjsh/angular-pokemon-assignment
+```
+Install the dependencies.
 
-4) Product List displays on Home tab which contains pokemon name and its image. Data is coming into pieces initially 30 pokemon render. Two next and previous buttons also there which render appropriate data. On the click of pokemon it renders to detail page.
-
-5) Detail page shows appropriate information related to selected pokemon. where we can fetch data using pokemon api and few more data using pokemon-spices, moves and evaluation Apis.
-
-6) Create product basically used to add new products that save in localstorage. All the fields includes proper validation save button enables after all the fields validate. Reset button used to reset form in initially state. Add New product used to add multiple similar fields that should not be more then 5.
-
-7) Product list picks products form localstorage and displays them inside. if there are not any products add using create form component user should not be able to click on product list tab, this is managed using canActivate Guard.
-
-8) Search component: User is able to enter a name of pokemon and on pressing enter if the name is correct user should be navigated to details page. Name should be three char long.
+```
+$ cd angular-pokemon-assignment
+$ npm install
+$ ng serve
+Open http://localhost:4200 in browser
+```

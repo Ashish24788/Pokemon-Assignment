@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/user.service';
 import { mergeMap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -43,9 +44,9 @@ export class ProductDetailComponent implements OnInit {
 
   getDamageData() {
     this.damageData = {};
-    this.response.moves.map((data) => {
-      this.userService.get(data.move.url).subscribe((res) => {
-        this.damageData[res.damage_class.name] = true;
+    forkJoin(this.response.moves.map(ob => this.userService.get(ob.move.url))).subscribe(res => {
+      res.forEach((ob: any) => {
+        this.damageData[ob.damage_class.name] = true;
       });
     });
   }

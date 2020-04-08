@@ -69,11 +69,12 @@
 
 .pokemon-image {
   width: 120px;
+  &.arrow {
+    width: 80px;
+  }
 }
 
 .ability {
-
-  // font-size: 0.8rem;
   &:not(:last-child) {
     &::after {
       content: ', ';

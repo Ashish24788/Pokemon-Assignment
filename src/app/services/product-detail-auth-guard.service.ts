@@ -10,12 +10,10 @@ export class ProductDetailAuthGuard implements CanActivate {
   constructor(private userService: UserService) {}
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return Observable.create((observer) => {
-      this.userService.showLoader(true);
       this.userService
         .get(SYSTEM_CONSTANTS.PRODUCT_DETAIL_URL + route.params.name)
         .pipe(
           finalize(() => {
-            this.userService.showLoader(false);
           })
         )
         .subscribe((res) => {

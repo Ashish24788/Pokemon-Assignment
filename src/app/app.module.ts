@@ -20,6 +20,9 @@ import { ProductDetailAuthGuard } from './services/product-detail-auth-guard.ser
 import { ProductListGuard } from './services/product-list-guard';
 import { UserService } from './core/user.service';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from './services/loader.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +46,7 @@ import { UserService } from './core/user.service';
     ProductDetailAuthGuard,
     UserService,
     ProductListGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
 })

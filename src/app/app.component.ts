@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from './core/user.service';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,9 @@ export class AppComponent {
 
   constructor(private userService: UserService) {
     this.userService
-      .getLoader()
+      .getLoader().pipe(
+        delay(0)
+      )
       .subscribe((res) => (this.showLoaderImage = res));
   }
 }

@@ -9,13 +9,13 @@
   <div class="float-right mt-2">
     <button class="btn btn-primary mr-3" type="button" [disabled]="!(response?.previous && !previousLoading)"
       (click)="getPokemonData(response.previous); previousLoading = true;">
-      <span [hidden]="!previousLoading" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-      {{previousLoading ? 'Loading...' : 'Previous'}}
+      <span></span>
+      {{'Previous'}}
     </button>
     <button class="btn btn-primary" type="button" [disabled]="!(response?.next && !nextLoading)"
       (click)="getPokemonData(response.next); nextLoading = true;">
-      <span [hidden]="!nextLoading" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-      {{nextLoading ? 'Loading...' : 'Next'}}
+      <span></span>
+      {{'Next'}}
     </button>
   </div>
 </div>

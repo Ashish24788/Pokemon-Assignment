@@ -18,7 +18,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardComponent } from './services/auth.service';
 import { ProductDetailAuthGuard } from './services/product-detail-auth-guard.service';
 import { ProductListGuard } from './services/product-list-guard';
-import { UserService } from './core/user.service';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './services/loader.interceptor';
@@ -31,7 +30,7 @@ import { LoaderInterceptor } from './services/loader.interceptor';
     ProductDetailComponent,
     PokemonListComponent,
     CreateProductComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +43,9 @@ import { LoaderInterceptor } from './services/loader.interceptor';
   providers: [
     AuthGuardComponent,
     ProductDetailAuthGuard,
-    UserService,
     ProductListGuard,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

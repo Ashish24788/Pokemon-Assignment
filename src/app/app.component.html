@@ -7,3 +7,7 @@
     <span class="sr-only">Loading...</span>
   </div>
 </div>
+
+<div class="fixed-bottom" #alert class="{{alertMessage?.class}} alert alert-dismissible fade show" role="alert" (click)="closeAlert()">
+  <p>{{alertMessage?.text}}</p>
+</div>

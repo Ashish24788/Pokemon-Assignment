@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/user.service';
 import { finalize } from 'rxjs/internal/operators/finalize';
+
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
@@ -20,7 +21,7 @@ export class PokemonListComponent implements OnInit {
   nextLoading = false;
   previousLoading = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.getPokemonData(this.url);

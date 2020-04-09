@@ -10,29 +10,29 @@ export class UserService {
   private dataSource = new BehaviorSubject<boolean>(false);
   data = this.dataSource.asObservable();
 
-  public isAdmin = true;
-  public detailData: any;
+  isAdmin = true;
+  detailData: any;
   private loader = new Subject<boolean>();
-  getLoader(): Observable<boolean> {
+  getLoader = (): Observable<boolean> => {
     return this.loader.asObservable();
   }
-  showLoader(data: boolean) {
+  showLoader = (data: boolean) => {
     this.loader.next(data);
   }
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
-  get(url): Observable<any> {
+  get = (url): Observable<any> => {
     return this.http.get<any>(url).pipe(retry(1), catchError(this.handleError));
   }
 
-  post(url, data): Observable<any> {
+  post = (url, data): Observable<any> => {
     return this.http
       .post<any>(url, data)
       .pipe(retry(1), catchError(this.handleError));
   }
 
-  handleError(error) {
+  handleError = (error) => {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error

@@ -33,7 +33,7 @@ export class AppComponent {
       .subscribe((res) => (this.showLoaderImage = res));
   }
 
-  closeAlert() {
-      this.alert.nativeElement.classList.remove(SYSTEM_CONSTANTS.FADE_IN_CLASS);
+  closeAlert = () => {
+    this.alert.nativeElement.classList.remove(SYSTEM_CONSTANTS.FADE_IN_CLASS);
   }
 }

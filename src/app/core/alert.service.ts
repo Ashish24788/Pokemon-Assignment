@@ -12,7 +12,7 @@ export class AlertService {
     getAlert(): Observable<AlertMessage> {
         return this.message.asObservable();
     }
-    showAlert(obj: any) {
+    showAlert = (obj: any) => {
         this.message.next(obj);
     }
 

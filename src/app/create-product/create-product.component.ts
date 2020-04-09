@@ -7,18 +7,18 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./create-product.component.css'],
 })
 export class CreateProductComponent implements OnInit {
-  public addProductForm: FormGroup;
+  addProductForm: FormGroup;
   msgs: any[];
   reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
-  public productList: FormArray;
+  productList: FormArray;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   get contactFormGroup() {
     return this.addProductForm.get('form') as FormArray;
   }
 
-  createProduct(): FormGroup {
+  createProduct = (): FormGroup => {
     return this.fb.group({
       name: [
         null,
@@ -64,14 +64,14 @@ export class CreateProductComponent implements OnInit {
     this.productForm();
   }
 
-  productForm() {
+  productForm = () => {
     this.addProductForm = this.fb.group({
       form: this.fb.array([this.createProduct()]),
     });
     this.productList = this.addProductForm.get('form') as FormArray;
   }
 
-  addProduct() {
+  addProduct = () => {
     if (this.productList.length < 5) {
       this.productList.push(this.createProduct());
     } else {
@@ -79,7 +79,7 @@ export class CreateProductComponent implements OnInit {
     }
   }
 
-  onFormSubmit() {
+  onFormSubmit = () => {
     const productData = JSON.parse(localStorage.getItem('addProductForm'));
     let productDataList =
       this.addProductForm &&
@@ -95,7 +95,7 @@ export class CreateProductComponent implements OnInit {
     this.productForm();
   }
 
-  resetForm() {
+  resetForm = () => {
     this.productForm();
   }
 }

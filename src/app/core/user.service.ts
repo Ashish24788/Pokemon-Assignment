@@ -4,6 +4,7 @@ import { Observable, throwError, Subject } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { PokemonDetail } from '../models/pokemon/pokemon-detail.model';
 
 @Injectable()
 export class UserService {
@@ -11,26 +12,26 @@ export class UserService {
   data = this.dataSource.asObservable();
 
   isAdmin = true;
-  detailData: any;
+  detailData: PokemonDetail;
   private loader = new Subject<boolean>();
   getLoader = (): Observable<boolean> => {
     return this.loader.asObservable();
-  }
+  };
   showLoader = (data: boolean) => {
     this.loader.next(data);
-  }
+  };
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   get = (url): Observable<any> => {
     return this.http.get<any>(url).pipe(retry(1), catchError(this.handleError));
-  }
+  };
 
   post = (url, data): Observable<any> => {
     return this.http
       .post<any>(url, data)
       .pipe(retry(1), catchError(this.handleError));
-  }
+  };
 
   handleError = (error) => {
     let errorMessage = '';
@@ -42,5 +43,5 @@ export class UserService {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);
-  }
+  };
 }

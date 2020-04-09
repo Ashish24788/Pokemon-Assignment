@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/user.service';
 import { finalize } from 'rxjs/internal/operators/finalize';
+import { Observable } from 'rxjs';
+import { PokemonList } from './../models/pokemon/pokemon-list.model';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -9,19 +11,11 @@ import { finalize } from 'rxjs/internal/operators/finalize';
 })
 export class PokemonListComponent implements OnInit {
   url = 'https://pokeapi.co/api/v2/pokemon/?limit=30&offset=0';
-  response: {
-    count: number;
-    next: string;
-    previous: string;
-    results: {
-      name: string;
-      url: string;
-    }[];
-  };
   nextLoading = false;
   previousLoading = false;
+  pokemonList: PokemonList;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.getPokemonData(this.url);
@@ -36,6 +30,8 @@ export class PokemonListComponent implements OnInit {
           this.previousLoading = false;
         })
       )
-      .subscribe((res) => (this.response = res));
-  }
+      .subscribe((res: PokemonList) => {
+        this.pokemonList = res;
+      });
+  };
 }

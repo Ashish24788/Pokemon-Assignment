@@ -34,9 +34,8 @@ export class AppComponent {
 
     });
     this.userService
-      .getLoader().pipe(
-        delay(SYSTEM_CONSTANTS.DELAY_TIME)
-      )
+      .getLoader()
+      .pipe(delay(SYSTEM_CONSTANTS.DELAY_TIME))
       .subscribe((res) => (this.showLoaderImage = res));
   }
 

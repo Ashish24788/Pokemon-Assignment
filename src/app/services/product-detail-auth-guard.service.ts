@@ -12,10 +12,7 @@ export class ProductDetailAuthGuard implements CanActivate {
     return Observable.create((observer) => {
       this.userService
         .get(SYSTEM_CONSTANTS.PRODUCT_DETAIL_URL + route.params.name)
-        .pipe(
-          finalize(() => {
-          })
-        )
+        .pipe(finalize(() => {}))
         .subscribe((res) => {
           if (res != null) {
             this.userService.detailData = res;

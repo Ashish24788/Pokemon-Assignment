@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './../../core/user.service';
 import { AlertService } from './../../core/alert.service';
-import { SYSTEM_CONSTANTS, VALIDATION_MSG } from 'src/app/core/system.constants';
+import {
+  SYSTEM_CONSTANTS,
+  VALIDATION_MSG,
+} from 'src/app/core/system.constants';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +15,12 @@ import { SYSTEM_CONSTANTS, VALIDATION_MSG } from 'src/app/core/system.constants'
 export class HeaderComponent {
   inputData = '';
   showTab: boolean;
-  constructor(private router: Router, private UserService: UserService, private alertService: AlertService) {
-    this.showTab = UserService.isAdmin;
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private alertService: AlertService
+  ) {
+    this.showTab = userService.isAdmin;
   }
   search = () => {
     if (this.inputData.length >= 3) {

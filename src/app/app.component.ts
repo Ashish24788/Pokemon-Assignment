@@ -20,6 +20,7 @@ export class AppComponent {
       delay(SYSTEM_CONSTANTS.DELAY_TIME)
     ).subscribe(data => {
       this.alertMessage = data;
+      this.alert.nativeElement.classList.add(SYSTEM_CONSTANTS.FADE_IN_CLASS);
       setTimeout(() => {
         this.closeAlert();
       }, SYSTEM_CONSTANTS.ALERT_FADE_OUT_TIME);
@@ -33,6 +34,6 @@ export class AppComponent {
   }
 
   closeAlert() {
-      // this.alert.nativeElement.classList.remove(SYSTEM_CONSTANTS.FADE_IN_CLASS);
+      this.alert.nativeElement.classList.remove(SYSTEM_CONSTANTS.FADE_IN_CLASS);
   }
 }

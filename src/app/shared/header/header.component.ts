@@ -21,7 +21,7 @@ export class HeaderComponent {
         .navigateByUrl('/', { skipLocationChange: true })
         .then(() => this.router.navigate(['/detail/', this.inputData]));
     } else {
-      this.alertService.showAlert({ text: VALIDATION_MSG.MIN_LENGTH_ERROR, class: SYSTEM_CONSTANTS.ERROR_CLASS })
+      this.alertService.showAlert({ text: VALIDATION_MSG.MIN_LENGTH_ERROR, class: SYSTEM_CONSTANTS.ERROR_CLASS });
     }
   }
 }

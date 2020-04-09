@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from './core/user.service';
 import { delay } from 'rxjs/operators';
 import { AlertService } from './core/alert.service';
@@ -12,21 +12,18 @@ import { SYSTEM_CONSTANTS } from './core/system.constants';
 export class AppComponent {
   title = 'angular-assignment';
   showLoaderImage = false;
-  showAlertFlag = false;
   alertMessage: any = {};
   private sampleNotification: any = {
     type: 'danger'
   };
   notificationConfig: any = {};
   notificationTimeOut: any;
-  // @ViewChild('alert', { static: true }) alert: ElementRef;
   constructor(private userService: UserService, private alertService: AlertService) {
-    this.alertService.getAlert().pipe(
+    this.alertService.message.pipe(
       delay(SYSTEM_CONSTANTS.DELAY_TIME)
     ).subscribe(data => {
       this.alertMessage = data;
       this.notificationConfig = {...this.sampleNotification, ...data, ...{show: true}};
-      // this.alert.nativeElement.classList.add(SYSTEM_CONSTANTS.FADE_IN_CLASS);
       clearTimeout(this.notificationTimeOut);
       this.notificationTimeOut = setTimeout(() => {
         this.closeAlert();
@@ -41,6 +38,5 @@ export class AppComponent {
 
   closeAlert = () => {
     this.notificationConfig.show = false;
-    // this.alert.nativeElement.classList.remove(SYSTEM_CONSTANTS.FADE_IN_CLASS);
   }
 }

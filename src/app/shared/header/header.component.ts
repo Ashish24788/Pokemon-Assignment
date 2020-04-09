@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from './../../core/user.service';
 import { AlertService } from './../../core/alert.service';
 import {
-  SYSTEM_CONSTANTS,
+  STATIC_CONSTANTS,
   VALIDATION_MSG,
 } from 'src/app/core/system.constants';
 
@@ -22,13 +22,27 @@ export class HeaderComponent {
   ) {
     this.showTab = userService.isAdmin;
   }
+
+  /**
+   * @ngdoc component
+   * @name search
+   * @memberof HeaderComponent
+   *
+   * @description
+   *
+   * This function is used to search the value entered in search box.
+   * firstly it check the input value
+   * If value is greater then given constant redirect page to searched product detail
+   * otherwise error message comes for min length
+   **/
+
   search = () => {
-    if (this.inputData.length >= 3) {
+    if (this.inputData.length >= STATIC_CONSTANTS.MIN_LENGTH_FOR_SEARCH) {
       this.router
         .navigateByUrl('/', { skipLocationChange: true })
         .then(() => this.router.navigate(['/detail/', this.inputData]));
     } else {
-      this.alertService.showAlert({text: VALIDATION_MSG.MIN_LENGTH_ERROR});
+      this.alertService.showAlert({ text: VALIDATION_MSG.MIN_LENGTH_ERROR });
     }
-  }
+  };
 }

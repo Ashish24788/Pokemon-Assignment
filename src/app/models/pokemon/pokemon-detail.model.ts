@@ -1,3 +1,6 @@
+/**
+ * Pokemon detail model have data model for pokemon Details
+ */
 export class PokemonDetail {
   species: {
     url: string;

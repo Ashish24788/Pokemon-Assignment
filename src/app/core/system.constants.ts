@@ -5,9 +5,17 @@ export const SYSTEM_CONSTANTS = {
   ALERT_FADE_OUT_TIME: 3000,
   FADE_IN_CLASS: 'show',
   SUCCESS_CLASS: 'alert-success',
-  ERROR_CLASS: 'alert-danger'
+  ERROR_CLASS: 'alert-danger',
+  PAGE_NOT_FOUND_IMAGE_URL:
+    'http://p.w3layouts.com/demos/oops-404/web/images/404-1.png',
 };
 export const VALIDATION_MSG = {
   MIN_LENGTH_ERROR: 'Minimum 3 characters required!',
-  POKEMON_NOT_FOUND_ERROR: 'No pokemon found with respective search.'
+  POKEMON_NOT_FOUND_ERROR: 'No pokemon found with respective search.',
+  PAGE_NOT_FOUND_ERROR_MSG: 'OOPS! - Could not Find it',
+};
+export const STATIC_CONSTANTS = {
+  MIN_LENGTH_FOR_SEARCH: 3,
+  MIN_LENGTH_FOR_NAME: 3,
+  MIN_LENGTH_FOR_DESCRIPTION: 3,
 };

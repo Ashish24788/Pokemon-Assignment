@@ -14,24 +14,81 @@ export class UserService {
   isAdmin = true;
   detailData: PokemonDetail;
   private loader = new Subject<boolean>();
+
+  /**
+   * @ngdoc service
+   * @name getLoader
+   * @memberof UserService
+   *
+   * @description
+   *
+   * This function is used to get loader.
+   **/
+
   getLoader = (): Observable<boolean> => {
     return this.loader.asObservable();
   };
+
+  /**
+   * @ngdoc service
+   * @name showLoader
+   * @memberof UserService
+   * @param {boolean} data boolean value
+   *
+   * @description
+   *
+   * This function is used to show loader.
+   **/
+
   showLoader = (data: boolean) => {
     this.loader.next(data);
   };
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  /**
+   * @ngdoc service
+   * @name get
+   * @memberof UserService
+   * @param {string} url url to get value from api call
+   *
+   * @description
+   *
+   * This function is used to hit httpRequest and get value and catch error.
+   **/
+
   get = (url): Observable<any> => {
     return this.http.get<any>(url).pipe(retry(1), catchError(this.handleError));
   };
+
+  /**
+   * @ngdoc service
+   * @name post
+   * @memberof UserService
+   * @param {url} url url to post value
+   * @param {object} data to get data value object
+   *
+   * @description
+   *
+   * This function is used to hit httpRequest and post value and catch error.
+   **/
 
   post = (url, data): Observable<any> => {
     return this.http
       .post<any>(url, data)
       .pipe(retry(1), catchError(this.handleError));
   };
+
+  /**
+   * @ngdoc service
+   * @name handleError
+   * @memberof UserService
+   * @param {error} error get error after http request
+   *
+   * @description
+   *
+   * This function is used to get error and show error message whether it is client side or server side.
+   **/
 
   handleError = (error) => {
     let errorMessage = '';

@@ -11,6 +11,20 @@ import { UserService } from '../core/user.service';
 export class AuthGuardComponent implements CanActivate {
   constructor(private router: Router, private userService: UserService) {}
   adminRoutes: Array<any> = ['/product-list', '/create-product'];
+
+  /**
+   * @ngdoc service
+   * @name canActivate
+   * @memberof AuthGuardComponent
+   * @param {route} object ActivatedRouteSnapshot data
+   * @param {state} object RouterStateSnapshot data
+   *
+   * @description
+   *
+   * This function is used check the auth guard for application and check the permission
+   * isAdmin flag decides which nav menu shows in header
+   **/
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     if (this.userService.isAdmin) {
       return true;

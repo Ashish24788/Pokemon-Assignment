@@ -8,6 +8,18 @@ import { finalize } from 'rxjs/operators';
 @Injectable()
 export class ProductDetailAuthGuard implements CanActivate {
   constructor(private userService: UserService) {}
+
+  /**
+   * @ngdoc service
+   * @name canActivate
+   * @memberof ProductDetailAuthGuard
+   * @param {route} object ActivatedRouteSnapshot data
+   *
+   * @description
+   *
+   * This function is used check the auth guard for product detail auth guard
+   **/
+
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return Observable.create((observer) => {
       this.userService

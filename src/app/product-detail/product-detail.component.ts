@@ -3,6 +3,7 @@ import { UserService } from '../core/user.service';
 import { mergeMap } from 'rxjs/operators';
 import { forkJoin } from 'rxjs';
 import { PokemonDetail } from './../models/pokemon/pokemon-detail.model';
+import { SYSTEM_CONSTANTS } from 'src/app/core/system.constants';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,14 +16,34 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private userService: UserService) {}
 
+  /**
+   * @ngdoc component
+   * @name ngOnInit
+   * @memberof ProductDetailComponent
+   *
+   * @description
+   *
+   * In this angular life cycle method store data in pokemonDetail variable call function to get upcomming values.
+   **/
+
   ngOnInit(): void {
-    // this.pokemonDetail = this.userService.detailData || {};
     this.pokemonDetail = this.userService.detailData;
     if (this.pokemonDetail.species && this.pokemonDetail.species.url) {
       this.getSpeciesData();
       this.getDamageData();
     }
   }
+
+  /**
+   * @ngdoc component
+   * @name getSpeciesData
+   * @memberof ProductDetailComponent
+   *
+   * @description
+   *
+   * This Function receive response for species data from api call and set value into related variables.
+   * This function also check evolution_chain.url value and call getEvolutionChainData function with url as input parameter.
+   **/
 
   getSpeciesData = () => {
     this.userService.get(this.pokemonDetail.species.url).subscribe((res) => {
@@ -42,6 +63,16 @@ export class ProductDetailComponent implements OnInit {
     });
   };
 
+  /**
+   * @ngdoc component
+   * @name getDamageData
+   * @memberof ProductDetailComponent
+   *
+   * @description
+   *
+   * This Function receive response for damage data from api call and set value into related array and pass it to ui.
+   **/
+
   getDamageData = () => {
     this.pokemonDetail.damageData = {
       damage_class: {
@@ -56,6 +87,19 @@ export class ProductDetailComponent implements OnInit {
       });
     });
   };
+
+  /**
+   * @ngdoc component
+   * @name getEvolutionChainData
+   * @memberof ProductDetailComponent
+   * @param {string} url to hit api and get relevent data.
+   *
+   * @description
+   *
+   * This function used to hit url and get character named response which have relevent information to hit next api.
+   * By hitting one more api using evolutionData.name as parameter in api.
+   * Get All data and pass them to ui for rendering.
+   **/
 
   getEvolutionChainData = (url) => {
     this.pokemonDetail.evolutionData = undefined;
@@ -79,7 +123,7 @@ export class ProductDetailComponent implements OnInit {
               imageURL: '',
             };
             return this.userService.get(
-              'https://pokeapi.co/api/v2/pokemon/' +
+              SYSTEM_CONSTANTS.PRODUCT_DETAIL_URL +
                 this.pokemonDetail.evolutionData.name
             );
           }

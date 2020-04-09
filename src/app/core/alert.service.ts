@@ -8,10 +8,8 @@ export interface AlertMessage {
 
 @Injectable()
 export class AlertService {
-    private message = new Subject<AlertMessage>();
-    getAlert(): Observable<AlertMessage> {
-        return this.message.asObservable();
-    }
+    message = new Subject<AlertMessage>();
+        
     showAlert = (obj: any) => {
         this.message.next(obj);
     }

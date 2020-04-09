@@ -8,16 +8,8 @@
   </div>
 </div>
 
-<!-- <div class="fixed-bottom" #alert class="{{alertMessage?.class}} alert alert-dismissible fade show" role="alert" (click)="closeAlert()">
-  <p>{{alertMessage?.text}}</p>
-</div> -->
-
-<div class="alert alert-dismissible fade show" [ngClass]="[true ? 'alert-' + notificationConfig.type : '', notificationConfig.show ? 'd-block' : 'd-none']">
-  <button type="button" class="close" (click)="notificationConfig.show=false">&times;</button>
-  <!-- <strong>Danger!</strong> -->
+<div class="alert alert-dismissible fade show" (click)="notificationConfig.show=false"
+  [ngClass]="[true ? 'alert-' + notificationConfig.type : '', notificationConfig.show ? 'd-block' : 'd-none']">
+  <button type="button" class="close">&times;</button>
   {{notificationConfig.text || ''}}!
 </div>
-<!-- <div class="fixed-bottom" #alert class="{{alertMessage?.class}} alert alert-dismissible fade show" role="alert"
-  (click)="closeAlert()">
-  <p>{{alertMessage?.text}}</p>
-</div> -->

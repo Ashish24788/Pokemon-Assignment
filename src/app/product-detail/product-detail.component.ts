@@ -23,7 +23,7 @@ export class ProductDetailComponent implements OnInit {
    *
    * @description
    *
-   * In this angular life cycle method store data in pokemonDetail variable call function to get upcomming values.
+   * In this angular life cycle method store data in pokemonDetail variable call function to get upcoming values.
    **/
 
   ngOnInit(): void {

@@ -11,7 +11,6 @@ import { Observable, of, throwError } from 'rxjs';
 import { finalize, catchError } from 'rxjs/operators';
 import { UserService } from '../core/user.service';
 import { AlertService } from '../core/alert.service';
-import { VALIDATION_MSG, SYSTEM_CONSTANTS } from '../core/system.constants';
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
   constructor(
@@ -23,8 +22,9 @@ export class LoaderInterceptor implements HttpInterceptor {
    * @ngdoc service
    * @name intercept
    * @memberof LoaderInterceptor
-   * @param {req} object HttpRequest Data
-   * @param {next} object HttpHandler Data
+   * @param {object} req HttpRequest Data
+   * @param {object} next HttpHandler Data
+   * @returns {object} return response/error
    *
    * @description
    *
@@ -46,10 +46,8 @@ export class LoaderInterceptor implements HttpInterceptor {
           } catch (e) {
             this.alertService.showAlert({ text: err.error });
           }
-          //log error
         }
         return of(err);
-        // return throwError(err.error);
       })
     );
   }

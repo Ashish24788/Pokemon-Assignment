@@ -7,7 +7,8 @@ export class ProductListGuard implements CanActivate {
    * @ngdoc service
    * @name canActivate
    * @memberof ProductListGuard
-   * @param {route} object ActivatedRouteSnapshot data
+   * @param {object} route ActivatedRouteSnapshot data
+   * @returns {boolean} return true/false
    *
    * @description
    *

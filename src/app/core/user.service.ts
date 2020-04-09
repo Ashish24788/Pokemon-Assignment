@@ -19,6 +19,7 @@ export class UserService {
    * @ngdoc service
    * @name getLoader
    * @memberof UserService
+   * @returns {boolean} return true/false
    *
    * @description
    *

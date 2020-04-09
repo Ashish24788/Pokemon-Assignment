@@ -16,8 +16,9 @@ export class AuthGuardComponent implements CanActivate {
    * @ngdoc service
    * @name canActivate
    * @memberof AuthGuardComponent
-   * @param {route} object ActivatedRouteSnapshot data
-   * @param {state} object RouterStateSnapshot data
+   * @param {object} route ActivatedRouteSnapshot data
+   * @param {object} state RouterStateSnapshot data
+   * @returns {boolean} return true/false
    *
    * @description
    *

@@ -85,12 +85,33 @@ export class CreateProductComponent implements OnInit {
     this.productForm();
   }
 
+  /**
+   * @ngdoc component
+   * @name productForm
+   * @memberof CreateProductComponent
+   *
+   * @description
+   *
+   * this creates form builder and render new form
+   **/
+
   productForm = () => {
     this.addProductForm = this.fb.group({
       form: this.fb.array([this.createProduct()]),
     });
     this.productList = this.addProductForm.get('form') as FormArray;
   };
+
+  /**
+   * @ngdoc component
+   * @name addProduct
+   * @memberof CreateProductComponent
+   *
+   * @description
+   *
+   * This calls when we click addNewProduct button
+   * It render atleast 5 new forms
+   **/
 
   addProduct = () => {
     if (this.productList.length < 5) {

@@ -13,7 +13,8 @@ export class ProductDetailAuthGuard implements CanActivate {
    * @ngdoc service
    * @name canActivate
    * @memberof ProductDetailAuthGuard
-   * @param {route} object ActivatedRouteSnapshot data
+   * @param {object} route ActivatedRouteSnapshot data
+   * @returns {boolean} return true/false.
    *
    * @description
    *

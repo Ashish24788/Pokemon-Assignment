@@ -27,7 +27,7 @@ export class PokemonListComponent implements OnInit {
     this.getPokemonData(this.url);
   }
 
-  getPokemonData(url) {
+  getPokemonData = (url) => {
     this.userService
       .get(url)
       .pipe(

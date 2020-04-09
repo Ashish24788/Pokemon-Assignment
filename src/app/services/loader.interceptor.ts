@@ -7,7 +7,7 @@ import { AlertService } from '../core/alert.service';
 import { VALIDATION_MSG, SYSTEM_CONSTANTS } from '../core/system.constants';
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
-    constructor(public userService: UserService, private alertService:AlertService) { }
+    constructor(private userService: UserService, private alertService:AlertService) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         this.userService.showLoader(true);
         return next.handle(req).pipe(

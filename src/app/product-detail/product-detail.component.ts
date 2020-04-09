@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
   damageData: any = {};
   evolutionData: any = {};
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.response = this.userService.detailData || {};
@@ -26,7 +26,7 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  getSpeciesData() {
+  getSpeciesData = () => {
     this.userService.get(this.response.species.url).subscribe((res) => {
       this.speciesData = res;
       this.flavorObject =
@@ -42,7 +42,7 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  getDamageData() {
+  getDamageData = () => {
     this.damageData = {};
     forkJoin(this.response.moves.map(ob => this.userService.get(ob.move.url))).subscribe(res => {
       res.forEach((ob: any) => {
@@ -51,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  getEvolutionChainData(url) {
+  getEvolutionChainData = (url) => {
     this.evolutionData = {};
     this.userService
       .get(url)

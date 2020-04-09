@@ -15,9 +15,9 @@ export class LoaderInterceptor implements HttpInterceptor {
             catchError((err: any) => {
                 if (err instanceof HttpErrorResponse) {
                     try {
-                        this.alertService.showAlert({ text: err.error, class: SYSTEM_CONSTANTS.ERROR_CLASS });
+                        this.alertService.showAlert({text: err.error});
                     } catch (e) {
-                        this.alertService.showAlert({ text: err.error, class: SYSTEM_CONSTANTS.ERROR_CLASS });
+                        this.alertService.showAlert({text: err.error});
                     }
                     //log error 
                 }

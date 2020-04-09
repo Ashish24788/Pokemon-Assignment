@@ -14,14 +14,21 @@ export class AppComponent {
   showLoaderImage = false;
   showAlertFlag = false;
   alertMessage: any = {};
-  @ViewChild('alert', { static: true }) alert: ElementRef;
+  private sampleNotification: any = {
+    type: 'danger'
+  };
+  notificationConfig: any = {};
+  notificationTimeOut: any;
+  // @ViewChild('alert', { static: true }) alert: ElementRef;
   constructor(private userService: UserService, private alertService: AlertService) {
     this.alertService.getAlert().pipe(
       delay(SYSTEM_CONSTANTS.DELAY_TIME)
     ).subscribe(data => {
       this.alertMessage = data;
-      this.alert.nativeElement.classList.add(SYSTEM_CONSTANTS.FADE_IN_CLASS);
-      setTimeout(() => {
+      this.notificationConfig = {...this.sampleNotification, ...data, ...{show: true}};
+      // this.alert.nativeElement.classList.add(SYSTEM_CONSTANTS.FADE_IN_CLASS);
+      clearTimeout(this.notificationTimeOut);
+      this.notificationTimeOut = setTimeout(() => {
         this.closeAlert();
       }, SYSTEM_CONSTANTS.ALERT_FADE_OUT_TIME);
 
@@ -34,6 +41,7 @@ export class AppComponent {
   }
 
   closeAlert = () => {
-    this.alert.nativeElement.classList.remove(SYSTEM_CONSTANTS.FADE_IN_CLASS);
+    this.notificationConfig.show = false;
+    // this.alert.nativeElement.classList.remove(SYSTEM_CONSTANTS.FADE_IN_CLASS);
   }
 }

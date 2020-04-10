@@ -25,7 +25,6 @@ export class PokemonListComponent implements OnInit {
    * @description
    *
    * This function calls getPokemonData method and pass url in parameter.
-   * otherwise error message comes for min length.
    **/
 
   ngOnInit() {

@@ -141,7 +141,7 @@ export class CreateProductComponent implements OnInit {
    *
    * This function is call when we submit form
    * this function checks that form have values and data exists there
-   * fetch already saved data from database and combined it with currently save data and save it in localstorage
+   * fetch already saved data from localStorage and combined it with currently save data and save it in localStorage
    **/
 
   onFormSubmit = () => {

@@ -34,6 +34,7 @@ export class HeaderComponent {
    * firstly it check the input value
    * If value is greater then given constant redirect page to searched product detail
    * otherwise error message comes for min length
+   * if we enter any wrong character then not found error comes from api.
    **/
 
   search = () => {

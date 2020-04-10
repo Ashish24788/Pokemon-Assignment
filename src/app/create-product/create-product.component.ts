@@ -23,6 +23,7 @@ export class CreateProductComponent implements OnInit {
    * @ngdoc component
    * @name createProduct
    * @memberof CreateProductComponent
+   * @returns {object} Form object instance
    *
    * @description
    *

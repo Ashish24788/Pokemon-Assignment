@@ -52,6 +52,7 @@ export class UserService {
    * @name get
    * @memberof UserService
    * @param {string} url url to get value from api call
+   * @returns {Observable} returns apiData and use it by using .subscribe method
    *
    * @description
    *
@@ -64,27 +65,10 @@ export class UserService {
 
   /**
    * @ngdoc service
-   * @name post
-   * @memberof UserService
-   * @param {url} url url to post value
-   * @param {object} data to get data value object
-   *
-   * @description
-   *
-   * This function is used to hit httpRequest and post value and catch error.
-   **/
-
-  post = (url, data): Observable<any> => {
-    return this.http
-      .post<any>(url, data)
-      .pipe(retry(1), catchError(this.handleError));
-  };
-
-  /**
-   * @ngdoc service
    * @name handleError
    * @memberof UserService
    * @param {error} error get error after http request
+   * @returns {Function}
    *
    * @description
    *

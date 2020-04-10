@@ -6,13 +6,13 @@ import { SYSTEM_CONSTANTS } from '../core/system.constants';
 import { finalize } from 'rxjs/operators';
 
 @Injectable()
-export class ProductDetailAuthGuard implements CanActivate {
+export class ProductDetailGuard implements CanActivate {
   constructor(private userService: UserService) {}
 
   /**
    * @ngdoc service
    * @name canActivate
-   * @memberof ProductDetailAuthGuard
+   * @memberof ProductDetailGuard
    * @param {object} route ActivatedRouteSnapshot data
    * @returns {boolean} return true/false.
    *

@@ -5,9 +5,8 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpErrorResponse,
-  HttpResponse,
 } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { finalize, catchError } from 'rxjs/operators';
 import { UserService } from '../core/user.service';
 import { AlertService } from '../core/alert.service';

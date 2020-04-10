@@ -6,11 +6,11 @@ import { PokemonDetail } from './../models/pokemon/pokemon-detail.model';
 import { SYSTEM_CONSTANTS } from 'src/app/core/system.constants';
 
 @Component({
-  selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss'],
+  selector: 'app-pokemon-detail',
+  templateUrl: './pokemon-detail.component.html',
+  styleUrls: ['./pokemon-detail.component.scss'],
 })
-export class ProductDetailComponent implements OnInit {
+export class PokemonDetailComponent implements OnInit {
   pokemonDetail: PokemonDetail;
 
   constructor(private userService: UserService) {}
@@ -18,7 +18,7 @@ export class ProductDetailComponent implements OnInit {
   /**
    * @ngdoc component
    * @name ngOnInit
-   * @memberof ProductDetailComponent
+   * @memberof PokemonDetailComponent
    *
    * @description
    *
@@ -36,7 +36,7 @@ export class ProductDetailComponent implements OnInit {
   /**
    * @ngdoc component
    * @name getSpeciesData
-   * @memberof ProductDetailComponent
+   * @memberof PokemonDetailComponent
    *
    * @description
    *
@@ -65,7 +65,7 @@ export class ProductDetailComponent implements OnInit {
   /**
    * @ngdoc component
    * @name getDamageData
-   * @memberof ProductDetailComponent
+   * @memberof PokemonDetailComponent
    *
    * @description
    *
@@ -86,7 +86,7 @@ export class ProductDetailComponent implements OnInit {
   /**
    * @ngdoc component
    * @name getEvolutionChainData
-   * @memberof ProductDetailComponent
+   * @memberof PokemonDetailComponent
    * @param {string} url to hit api and get relevent data.
    *
    * @description

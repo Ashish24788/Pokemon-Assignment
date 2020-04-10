@@ -5,11 +5,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { CreateProductComponent } from './create-product/create-product.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 import { AuthGuardComponent } from './services/auth.service';
-import { ProductDetailAuthGuard } from './services/product-detail-auth-guard.service';
+import { ProductDetailGuard } from './services/product-detail-guard.service';
 import { ProductListGuard } from './services/product-list-guard';
 
 const routes: Routes = [
@@ -24,8 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'detail/:name',
-    component: ProductDetailComponent,
-    canActivate: [ProductDetailAuthGuard],
+    component: PokemonDetailComponent,
+    canActivate: [ProductDetailGuard],
   },
   {
     path: 'create-product',

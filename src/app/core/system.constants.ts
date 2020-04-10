@@ -6,6 +6,10 @@ export const SYSTEM_CONSTANTS = {
   FADE_IN_CLASS: 'show',
   SUCCESS_CLASS: 'alert-success',
   ERROR_CLASS: 'alert-danger',
+  REGEX_FOR_ALPHANUMERIC: /^[a-zA-Z0-9_s]*$/,
+  REGEX_FOR_PHONE: /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/,
+  REGEX_FOR_DECIMAL: /^\d+\.\d{2}$/,
+  REGEX_FOR_IMG_URL: '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?',
   PAGE_NOT_FOUND_IMAGE_URL:
     'http://p.w3layouts.com/demos/oops-404/web/images/404-1.png',
 };

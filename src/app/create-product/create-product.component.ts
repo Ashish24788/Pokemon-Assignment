@@ -4,6 +4,7 @@ import { AlertService } from './../core/alert.service';
 import {
   STATIC_CONSTANTS,
   VALIDATION_MSG,
+  SYSTEM_CONSTANTS,
 } from 'src/app/core/system.constants';
 
 @Component({
@@ -14,7 +15,6 @@ import {
 export class CreateProductComponent implements OnInit {
   addProductForm: FormGroup;
   msgs: any[];
-  reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   productList: FormArray;
   ERROR_MESSAGES = VALIDATION_MSG;
 
@@ -42,7 +42,7 @@ export class CreateProductComponent implements OnInit {
         Validators.compose([
           Validators.required,
           Validators.minLength(STATIC_CONSTANTS.MIN_LENGTH_FOR_NAME),
-          Validators.pattern(/^[a-zA-Z0-9_\s]*$/),
+          Validators.pattern(SYSTEM_CONSTANTS.REGEX_FOR_ALPHANUMERIC),
         ]),
       ],
       description: [
@@ -50,27 +50,30 @@ export class CreateProductComponent implements OnInit {
         Validators.compose([
           Validators.required,
           Validators.minLength(STATIC_CONSTANTS.MIN_LENGTH_FOR_DESCRIPTION),
-          Validators.pattern(/^[a-zA-Z0-9_\s]*$/),
+          Validators.pattern(SYSTEM_CONSTANTS.REGEX_FOR_ALPHANUMERIC),
         ]),
       ],
       price: [
         null,
         Validators.compose([
           Validators.required,
-          Validators.pattern(/^\d+\.\d{2}$/),
+          Validators.pattern(SYSTEM_CONSTANTS.REGEX_FOR_DECIMAL),
         ]),
       ],
       category: ['electronics', Validators.compose([Validators.required])],
       imageURL: [
         null,
-        Validators.compose([Validators.required, Validators.pattern(this.reg)]),
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(SYSTEM_CONSTANTS.REGEX_FOR_IMG_URL),
+        ]),
       ],
       phone: [
         null,
         Validators.compose([
           Validators.required,
           Validators.maxLength(STATIC_CONSTANTS.MAX_LENGTH_FOR_PHONE),
-          Validators.pattern(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/),
+          Validators.pattern(SYSTEM_CONSTANTS.REGEX_FOR_PHONE),
         ]),
       ],
       select: ['mobile'],

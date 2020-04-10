@@ -74,11 +74,7 @@ export class ProductDetailComponent implements OnInit {
    **/
 
   getDamageData = () => {
-    this.pokemonDetail.damageData = {
-      damage_class: {
-        name,
-      },
-    };
+    this.pokemonDetail.damageData = {};
     forkJoin(
       this.pokemonDetail.moves.map((ob) => this.userService.get(ob.move.url))
     ).subscribe((res) => {

@@ -1,7 +1,7 @@
 <div class="container my-3">
   <form [formGroup]="addProductForm" (ngSubmit)="onFormSubmit()">
-    <div formArrayName="form">
-      <div *ngFor="let product of contactFormGroup.controls; let i = index" class="form-group">
+    <div formArrayName="form" class="product-forms">
+      <div *ngFor="let product of contactFormGroup.controls; let i = index" class="form-group product-form">
         <div [formGroupName]="i" class="row">
           <div class="form-group row col-12">
             <div class="form-group col-md-4">
@@ -130,7 +130,7 @@
       </div>
     </div>
     <div class="text-right col-12">
-      <button class="btn btn-primary m-1" [disabled]="!(productList?.length < 5)" type="button" (click)="addProduct()">
+      <button class="btn btn-primary m-1" type="button" (click)="addProduct()">
         Add New Product
       </button>
     </div>

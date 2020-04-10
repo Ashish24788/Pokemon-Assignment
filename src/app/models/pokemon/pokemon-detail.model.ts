@@ -40,8 +40,6 @@ export class PokemonDetail {
     flavor_text: string;
   };
   damageData: {
-    damage_class: {
-      name: string;
-    };
+    string?: boolean;
   };
 }

@@ -11,19 +11,19 @@
                   (product?.controls)['name']?.touched &&
                   product?.controls['name']?.hasError('required')
                 ">
-                Name is required!
+                {{ERROR_MESSAGES.REQUIRED_ERROR_FOR_NAME}}
               </span>
               <span class="text-danger" *ngIf="
                   (product?.controls)['name']?.touched &&
                   product?.controls['name']?.hasError('minlength')
                 ">
-                Min length is 3
+                {{ERROR_MESSAGES.MIN_LENGTH_ERROR_FOR_NAME}}
               </span>
               <span class="text-danger" *ngIf="
                   (product?.controls)['name']?.touched &&
                   product?.controls['name']?.hasError('pattern')
                 ">
-                Please enter alphanumeric value
+                {{ERROR_MESSAGES.PATTERN_ERROR_FOR_NAME}}
               </span>
             </div>
             <div class="form-group col-md-4">
@@ -33,19 +33,19 @@
                   (product?.controls)['description']?.touched &&
                   product?.controls['description']?.hasError('required')
                 ">
-                Description is required!
+                {{ERROR_MESSAGES.REQUIRED_ERROR_FOR_DESCRIPTION}}
               </span>
               <span class="text-danger" *ngIf="
                   (product?.controls)['description']?.touched &&
                   product?.controls['description']?.hasError('minlength')
                 ">
-                Min length is 3
+                {{ERROR_MESSAGES.MIN_LENGTH_ERROR_FOR_DESCRIPTION}}
               </span>
               <span class="text-danger" *ngIf="
                   (product?.controls)['description']?.touched &&
                   product?.controls['description']?.hasError('pattern')
                 ">
-                Please enter alphanumeric value
+                {{ERROR_MESSAGES.PATTERN_ERROR_FOR_DESCRIPTION}}
               </span>
             </div>
             <div class="form-group col-md-4">
@@ -55,13 +55,13 @@
                   (product?.controls)['price']?.touched &&
                   product?.controls['price']?.hasError('required')
                 ">
-                price is required!
+                {{ERROR_MESSAGES.REQUIRED_ERROR_FOR_PRICE}}
               </span>
               <span class="text-danger" *ngIf="
                   (product?.controls)['price']?.touched &&
                   product?.controls['price']?.hasError('pattern')
                 ">
-                Please enter 2 decimal
+                {{ERROR_MESSAGES.PATTERN_ERROR_FOR_PRICE}}
               </span>
             </div>
           </div>
@@ -77,7 +77,7 @@
                   (product?.controls)['category']?.touched &&
                   product?.controls['category']?.hasError('required')
                 ">
-                Category is required!
+                {{ERROR_MESSAGES.REQUIRED_CATEGORY}}
               </span>
             </div>
             <div class="form-group col-md-4">
@@ -87,13 +87,13 @@
                   (product?.controls)['imageURL']?.touched &&
                   product?.controls['imageURL']?.hasError('required')
                 ">
-                imageURL is required!
+                {{ERROR_MESSAGES.IMAGE_URL_REQUIRED}}
               </span>
               <span class="text-danger" *ngIf="
                   (product?.controls)['imageURL']?.touched &&
                   product?.controls['imageURL']?.hasError('pattern')
                 ">
-                Please enter valid URL
+                {{ERROR_MESSAGES.VALID_IMAGE_URL}}
               </span>
             </div>
             <div class="form-group col-md-2">
@@ -103,19 +103,19 @@
                   (product?.controls)['phone']?.touched &&
                   product?.controls['phone']?.hasError('required')
                 ">
-                phone is required!
+                {{ERROR_MESSAGES.REQUIRED_ERROR_FOR_PHONE}}
               </span>
               <span class="text-danger" *ngIf="
                   (product?.controls)['phone']?.touched &&
                   product?.controls['phone']?.hasError('maxlength')
                 ">
-                Max length is 10
+                {{ERROR_MESSAGES.MAX_LENGTH_ERROR_FOR_PHONE}}
               </span>
               <span class="text-danger" *ngIf="
                   (product?.controls)['phone']?.touched &&
                   product?.controls['phone']?.hasError('pattern')
                 ">
-                Please enter valid phone number
+                {{ERROR_MESSAGES.PATTERN_ERROR_FOR_PHONE}}
               </span>
             </div>
             <div class="form-group col-md-2">

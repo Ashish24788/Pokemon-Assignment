@@ -1,6 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { AlertService } from './../core/alert.service';
+import {
+  STATIC_CONSTANTS,
+  VALIDATION_MSG,
+} from 'src/app/core/system.constants';
 
 @Component({
   selector: 'app-create-product',
@@ -12,6 +16,7 @@ export class CreateProductComponent implements OnInit {
   msgs: any[];
   reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   productList: FormArray;
+  ERROR_MESSAGES = VALIDATION_MSG;
 
   constructor(private fb: FormBuilder, private alertService: AlertService) {}
 
@@ -36,7 +41,7 @@ export class CreateProductComponent implements OnInit {
         null,
         Validators.compose([
           Validators.required,
-          Validators.minLength(3),
+          Validators.minLength(STATIC_CONSTANTS.MIN_LENGTH_FOR_NAME),
           Validators.pattern(/^[a-zA-Z0-9_\s]*$/),
         ]),
       ],
@@ -44,7 +49,7 @@ export class CreateProductComponent implements OnInit {
         null,
         Validators.compose([
           Validators.required,
-          Validators.minLength(3),
+          Validators.minLength(STATIC_CONSTANTS.MIN_LENGTH_FOR_DESCRIPTION),
           Validators.pattern(/^[a-zA-Z0-9_\s]*$/),
         ]),
       ],
@@ -64,7 +69,7 @@ export class CreateProductComponent implements OnInit {
         null,
         Validators.compose([
           Validators.required,
-          Validators.maxLength(10),
+          Validators.maxLength(STATIC_CONSTANTS.MAX_LENGTH_FOR_PHONE),
           Validators.pattern(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/),
         ]),
       ],
@@ -115,10 +120,15 @@ export class CreateProductComponent implements OnInit {
    **/
 
   addProduct = () => {
-    if (this.productList.length < 5) {
+    if (
+      this.productList.length <
+      STATIC_CONSTANTS.MAX_LENGTH_FOR_ADD_NEW_PRODUCT_FORM
+    ) {
       this.productList.push(this.createProduct());
     } else {
-      this.alertService.showAlert({ text: 'you can add max 5 product' });
+      this.alertService.showAlert({
+        text: this.ERROR_MESSAGES.MAX_LENGTH_ERROR_FOR_ADD_NEW_PRODUCT,
+      });
     }
   };
 

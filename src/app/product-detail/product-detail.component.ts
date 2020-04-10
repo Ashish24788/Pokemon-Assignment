@@ -11,7 +11,6 @@ import { SYSTEM_CONSTANTS } from 'src/app/core/system.constants';
   styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit {
-  // damageData: any = {};
   pokemonDetail: PokemonDetail;
 
   constructor(private userService: UserService) {}

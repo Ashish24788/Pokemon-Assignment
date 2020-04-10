@@ -27,7 +27,8 @@ Pokemon details and Listing Application is used to show pokemon list, pokemon de
 - We should not use Public keyword, by default all props and methods public.
 - Use private keyword at relevant places.
 - We handle wild card routing.
-- No Any inlie css used in project
+- No Any inline css used in project
+- All the error messages, urls and min/max length comes from system.constants.ts file.
 
 > The goal of this project to show pokemon list and render pokemons detail and create products and render them in product list.
 

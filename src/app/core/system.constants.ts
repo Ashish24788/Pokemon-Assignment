@@ -13,7 +13,27 @@ export const VALIDATION_MSG = {
   MIN_LENGTH_ERROR: 'Minimum 3 characters required!',
   POKEMON_NOT_FOUND_ERROR: 'No pokemon found with respective search.',
   PAGE_NOT_FOUND_ERROR_MSG: 'OOPS! - Could not Find it',
+  MIN_LENGTH_ERROR_FOR_NAME: 'Min length is 3 for name',
+  REQUIRED_ERROR_FOR_NAME: 'Name is required!',
+  PATTERN_ERROR_FOR_NAME: 'Please enter alphanumeric value for name',
+  MIN_LENGTH_ERROR_FOR_DESCRIPTION: 'Min length is 3 for description',
+  REQUIRED_ERROR_FOR_DESCRIPTION: 'Description is required!',
+  PATTERN_ERROR_FOR_DESCRIPTION:
+    'Please enter alphanumeric value for description',
+  REQUIRED_ERROR_FOR_PRICE: 'price is required!',
+  PATTERN_ERROR_FOR_PRICE: 'Please enter 2 decimal for price',
+  MAX_LENGTH_ERROR_FOR_PHONE: 'Max length is 10 for phone',
+  REQUIRED_ERROR_FOR_PHONE: 'phone is required!',
+  PATTERN_ERROR_FOR_PHONE: 'Please enter valid phone number',
+  VALID_IMAGE_URL: 'Please enter valid URL',
+  IMAGE_URL_REQUIRED: 'imageURL is required!',
+  REQUIRED_CATEGORY: 'Category is required!',
+  MAX_LENGTH_ERROR_FOR_ADD_NEW_PRODUCT: 'You can not add more then 5 product',
 };
 export const STATIC_CONSTANTS = {
   MIN_LENGTH_FOR_SEARCH: 3,
+  MIN_LENGTH_FOR_NAME: 3,
+  MIN_LENGTH_FOR_DESCRIPTION: 3,
+  MAX_LENGTH_FOR_PHONE: 10,
+  MAX_LENGTH_FOR_ADD_NEW_PRODUCT_FORM: 5,
 };
